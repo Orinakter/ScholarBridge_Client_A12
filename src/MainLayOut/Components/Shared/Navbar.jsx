@@ -41,7 +41,7 @@ const Navbar = () => {
     </div>
     <div className="flex items-center gap-2">
         <img src={logo} alt="" className='w-[60px] h-[60px] rounded-full' />
-        <h1 class="text-xl font-bold bg-[#126e82] text-white px-2 py-2 rounded-lg shadow-md hover:shadow-lg">
+        <h1 class="text-2xl font-bold  text-[#126e82]">
   ScholarBridge
 </h1>
     </div>
