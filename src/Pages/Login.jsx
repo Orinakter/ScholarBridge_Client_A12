@@ -1,13 +1,58 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { MdOutlineMail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import loginLottieData from '../assets/Lotties/loginLottie.json'
 import Lottie from 'lottie-react';
+import { authorizedContext } from '../AuthProvider/AuthProvider';
 
 
 const Login = () => {
+    const { loginUser, googleLoginBtn } = useContext(authorizedContext);
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+  const { state } = useLocation();
+
+  const loginFormHandler =(e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    
+
+    setErrorMessage("");
+
+    loginUser(email, password)
+      .then((result) => {
+        toast.success("User Login Successfully");
+
+        if (state) {
+          navigate(state);
+        } else {
+          navigate("/");
+        }
+      })
+
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
+
+  const googleLoginHandler = () => {
+    googleLoginBtn()
+      .then((result) => {
+        if (state) {
+          navigate(state);
+        } else {
+          navigate("/");
+        }
+
+        toast.success("User Login Successfully");
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
     return (
         <div>
              <div className=" flex  items-center justify-center mt-12">
@@ -23,7 +68,7 @@ const Login = () => {
             <h2 className="text-3xl font-bold mb-3 text-[#126e82] text-center">
               Log In your Account
             </h2>
-            <form >
+            <form onSubmit={loginFormHandler}>
               <div className="form-control mt-2">
                 <label className="flex justify-start items-center gap-2 mb-3 mt-4">
                   <span className="text-xl text-[#126e82]">
@@ -80,7 +125,7 @@ const Login = () => {
 
             <div className="text-center flex items-center gap-3">
               <button
-               
+               onClick={googleLoginHandler}
                 className="btn w-full bg-white py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition duration-300"
               >
                 <span className="text-2xl">
