@@ -6,10 +6,10 @@ const Navbar = () => {
   <NavLink> <li>All Scholarship</li></NavLink>
   <NavLink><li>User Dashboard</li></NavLink>
   <NavLink><li>Admin Dashboard</li></NavLink>
-  <NavLink><li>Login</li></NavLink>
+  
   </>
     return (
-        <div className='sticky top-0 bg-opacity-80 z-10 bg-[#1E3A8A]'>
+        <div className='sticky top-0 bg-opacity-80 z-10'>
             <div className="navbar bg-base-100 px-6 py-3">
   <div className="navbar-start">
     <div className="dropdown">
@@ -59,6 +59,10 @@ const Navbar = () => {
 
     </ul>
    
+  </div>
+  <div className="flex items-center gap-4">
+  <button className='btn bg-[#126e82] text-white'>Login</button>
+
   </div>
 </div>
         </div>
