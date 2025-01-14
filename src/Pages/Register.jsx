@@ -1,13 +1,85 @@
 import Lottie from 'lottie-react';
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { FaUserLarge } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 import { MdOutlineMail, MdPhotoLibrary } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import registerLottieData from '../assets/Lotties/loginLottie.json'
+import { authorizedContext } from '../AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Register = () => {
+
+    const {registerUser,userProfileUpdate,googleLoginBtn} = useContext(authorizedContext)
+    const [errorMessage,setErrorMessage] = useState(null)
+    const navigate = useNavigate()
+    const registerFormHandler = (e)=>{
+      e.preventDefault()
+      const name = e.target.name.value;
+      const photoUrl = e.target.photoUrl.value;
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+  
+      setErrorMessage("")
+      
+      if (!/[!@#$%^&*]/.test(password)) {
+         toast.error("Password must have at least one special character")
+         return
+      }
+  
+     const uppercaseRegex = /^(?=.*[A-Z]).+$/;
+     if(!uppercaseRegex.test(password)){
+      toast.error("You Should need one Uppercase")
+      return
+     }
+  
+     if(password.length<6){
+      toast.error("Password Should be 6 digit")
+      
+     }
+  
+     registerUser(email, password)
+        .then((data) => {
+          userProfileUpdate(name,photoUrl)
+           navigate("/")
+  
+          toast.success("User Registation Successfully");
+        })
+        .catch((error) => {
+          navigate("/")
+          toast.error("All fields are required")
+          setErrorMessage(error.message);
+        });
+    };
+  
+    const googleRegisterHandler  = ()=>{
+        googleLoginBtn()
+    
+        .then(result=>{
+          if(state){
+            navigate(state)
+          }
+          else{
+            navigate("/")
+    
+          }
+          navigate("/")
+          toast.success ("User Login Successfully")
+        })
+        .catch(error=>{
+          setErrorMessage(error.message)
+          
+        })
+        
+    
+      }
+    
+
+
+    
+
+
     return (
         <div>
             <div className="flex  items-center justify-center mt-12">
@@ -25,7 +97,7 @@ const Register = () => {
           <h2 className="text-3xl font-bold mb-3 text-[#126e82] text-center">
             Registration 
           </h2>
-          <form className="card-body">
+          <form onSubmit={registerFormHandler}  className="card-body">
             <div className="form-control">
               <label className="flex justify-start items-center gap-2 mb-2 ">
                 <span className="text-xl text-[#126e82]">
@@ -99,6 +171,7 @@ const Register = () => {
             </div>
           <div className="text-center flex items-center gap-3">
                         <button
+                        onClick={googleRegisterHandler}
                          
                           className="btn w-full bg-white py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition duration-300"
                         >
