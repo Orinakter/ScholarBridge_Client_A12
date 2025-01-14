@@ -1,8 +1,8 @@
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import logo from '../../../assets/images/logo.png'
 const Navbar = () => {
   const navList = <>
-  <NavLink> <li>Home</li></NavLink>
+  <NavLink to="/"> <li>Home</li></NavLink>
   <NavLink> <li>All Scholarship</li></NavLink>
   <NavLink><li>User Dashboard</li></NavLink>
   <NavLink><li>Admin Dashboard</li></NavLink>
@@ -61,7 +61,7 @@ const Navbar = () => {
    
   </div>
   <div className="flex items-center gap-4">
-  <button className='btn bg-[#126e82] text-white'>Login</button>
+ <Link to="/login"> <button className='btn bg-[#126e82] text-white'>Login</button></Link>
 
   </div>
 </div>

@@ -11,7 +11,7 @@ const Banner = () => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
-          className="min-h-[70vh] w-full flex justify-center items-center object-cover "
+          className="min-h-[70vh] w-full flex justify-center items-center "
         >
           <h1 className="text-xl md:text-2xl lg:text-4xl text-white font-bold">
           Unlock Global Opportunities with ScholarBridge
@@ -35,7 +35,7 @@ const Banner = () => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
-          className="min-h-[70vh] w-full bg-no-repeat bg-center bg-cover flex justify-center items-center object-cover "
+          className="min-h-[70vh] w-full bg-no-repeat bg-center bg-cover flex justify-center items-center "
         >
           <h1 className="text-xl md:text-2xl lg:text-4xl text-white font-bold">
           Unlock Global Opportunities with ScholarBridge
@@ -58,7 +58,7 @@ const Banner = () => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
-          className="min-h-[70vh] w-full bg-no-repeat bg-center bg-cover flex justify-center items-center object-cover "
+          className="min-h-[70vh] w-full bg-no-repeat bg-center bg-cover flex justify-center items-center "
         >
           <h1 className="text-xl md:text-2xl lg:text-4xl text-white font-bold">
           Unlock Global Opportunities with ScholarBridge
@@ -81,7 +81,7 @@ const Banner = () => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
-          className="min-h-[70vh] w-full bg-no-repeat bg-center bg-cover flex justify-center items-center object-cover"
+          className="min-h-[70vh] w-full bg-no-repeat bg-center bg-cover flex justify-center items-center"
         >
           <h1 className="text-xl md:text-2xl lg:text-4xl text-white font-bold">
           Unlock Global Opportunities with ScholarBridge
