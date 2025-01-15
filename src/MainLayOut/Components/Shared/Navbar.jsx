@@ -1,6 +1,19 @@
 import { Link, NavLink } from 'react-router';
 import logo from '../../../assets/images/logo.png'
+import { useContext } from 'react';
+import { authorizedContext } from '../../../AuthProvider/AuthProvider';
 const Navbar = () => {
+  const {user,logOut} = useContext(authorizedContext)
+  const signoutHandler = ()=>{
+    logOut()
+    .then(()=>{
+      navigate("/login")
+      toast.success("User Logout Successfully")
+    })
+    .catch(error=>{
+      toast.error(error.message)
+    })
+  }
   const navList = <>
   <NavLink to="/"> <li>Home</li></NavLink>
   <NavLink> <li>All Scholarship</li></NavLink>
@@ -60,10 +73,19 @@ const Navbar = () => {
     </ul>
    
   </div>
-  <div className="flex items-center gap-4">
- <Link to="/login"> <button className='btn bg-[#126e82] text-white'>Login</button></Link>
 
-  </div>
+<div className="">
+        {
+          user ? <div className="flex justify-center items-center gap-3">
+            <img className="w-10 h-10 rounded-full" src={user.photoURL} alt="" />
+            <button onClick={signoutHandler} className="btn bg-[#126e82] text-white font-bold">Log-Out</button>
+          </div> :
+           <Link to="/login"><button className="btn bg-[#126e82] text-white font-bold">Login</button></Link>
+        }
+      </div>
+
+
+
 </div>
         </div>
     );

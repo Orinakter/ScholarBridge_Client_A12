@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import loginLottieData from '../assets/Lotties/loginLottie.json'
 import Lottie from 'lottie-react';
 import { authorizedContext } from '../AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
