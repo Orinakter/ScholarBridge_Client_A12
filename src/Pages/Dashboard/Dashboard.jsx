@@ -2,19 +2,22 @@ import React from "react";
 import { NavLink } from "react-router";
 import { AiFillHome } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
+import { MdOutlineSettingsApplications, MdReviews } from "react-icons/md";
 const Dashboard = () => {
   const isUser = true;
   const isAdmin = false;
   const isModerator = !true;
   return (
     <div className="px-10 space-y-4">
+      <h1 className="font-bold text-xl text-white text-center">Dashboard</h1>
       {isUser && (
         <>
-          <NavLink to="my-profile" className="btn w-full">
-            My Application
+        
+          <NavLink to="my-application" className="btn w-full">
+          <MdOutlineSettingsApplications className="text-lg"/>My Application
           </NavLink>
-          <NavLink to="my-profile" className="btn w-full">
-            My Reviews
+          <NavLink to="my-reviews" className="btn w-full">
+          <MdReviews className="text-lg" /> My Reviews
           </NavLink>
         </>
       )}
