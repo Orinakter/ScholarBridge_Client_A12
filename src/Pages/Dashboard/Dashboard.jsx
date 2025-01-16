@@ -4,9 +4,9 @@ import { AiFillHome } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { MdOutlineSettingsApplications, MdReviews } from "react-icons/md";
 const Dashboard = () => {
-  const isUser = true;
+  const isUser = !true;
   const isAdmin = false;
-  const isModerator = !true;
+  const isModerator = true;
   return (
     <div className="px-10 space-y-4">
       <h1 className="font-bold text-xl text-white text-center">Dashboard</h1>
@@ -55,7 +55,7 @@ const Dashboard = () => {
           <NavLink to="my-profile" className="btn w-full">
             All Applied Scholarship
           </NavLink>
-          <NavLink to="my-profile" className="btn w-full">
+          <NavLink to="add-scholarship" className="btn w-full">
             Add Scholarship
           </NavLink>
         </>

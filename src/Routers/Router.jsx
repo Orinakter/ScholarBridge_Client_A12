@@ -9,6 +9,7 @@ import AllScholarship from "../Pages/AllScholarship";
 import MyProfile from "../Pages/Dashboard/MyProfile";
 import MyApplication from "../Pages/Dashboard/MyApplication";
 import MyReviews from "../Pages/Dashboard/MyReviews";
+import AddScholarship from "../Pages/Dashboard/AddScholarship";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,11 @@ export const router = createBrowserRouter([
         path: 'my-reviews',
         element: <MyReviews></MyReviews>
       },
+      {
+        path: 'add-scholarship',
+        element: <AddScholarship></AddScholarship>
+      },
+
       
 
 
