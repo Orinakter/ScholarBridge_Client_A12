@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6';
 import { IoIosContact } from 'react-icons/io';
 import { MdEmail } from 'react-icons/md';
-import footerLogo from '../../../assets/images/logo.png'
+import footerLogo from '../../assets/images/logo.png'
 
 const Footer = () => {
     return (

@@ -1,25 +1,23 @@
-import React, { useContext, useState } from 'react';
-import { FcGoogle } from 'react-icons/fc';
-import { MdOutlineMail } from 'react-icons/md';
-import { RiLockPasswordFill } from 'react-icons/ri';
-import { Link, useLocation, useNavigate } from 'react-router';
-import loginLottieData from '../assets/Lotties/loginLottie.json'
-import Lottie from 'lottie-react';
-import { authorizedContext } from '../AuthProvider/AuthProvider';
-import { toast } from 'react-toastify';
-
+import React, { useContext, useState } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { MdOutlineMail } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
+import { Link, useLocation, useNavigate } from "react-router";
+import loginLottieData from "../assets/Lotties/loginLottie.json";
+import Lottie from "lottie-react";
+import { authorizedContext } from "../AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
-    const { loginUser, googleLoginBtn } = useContext(authorizedContext);
+  const { loginUser, googleLoginBtn } = useContext(authorizedContext);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  const loginFormHandler =(e) => {
+  const loginFormHandler = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    
 
     setErrorMessage("");
 
@@ -54,9 +52,9 @@ const Login = () => {
         setErrorMessage(error.message);
       });
   };
-    return (
-        <div>
-             <div className=" flex  items-center justify-center mt-12">
+  return (
+    <div>
+      <div className=" flex  items-center justify-center mt-12">
         <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl flex flex-col lg:flex-row overflow-hidden">
           <div className="lg:w-1/2 p-10">
             <h2 className="text-2xl text-[#126e82] text-center font-bold mb-4">
@@ -126,7 +124,7 @@ const Login = () => {
 
             <div className="text-center flex items-center gap-3">
               <button
-               onClick={googleLoginHandler}
+                onClick={googleLoginHandler}
                 className="btn w-full bg-white py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition duration-300"
               >
                 <span className="text-2xl">
@@ -138,7 +136,7 @@ const Login = () => {
             <p className="text-center text-sm  mt-4">
               Don't have an Account?
               <Link to="/register">
-                {" "}
+              
                 <span className="text-[#126e82] hover:underline font-semibold">
                   Register Now
                 </span>
@@ -147,8 +145,8 @@ const Login = () => {
           </div>
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Login;
