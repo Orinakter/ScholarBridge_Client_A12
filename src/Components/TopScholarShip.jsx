@@ -113,7 +113,7 @@ const TopScholarShip = () => {
           <div className="mx-auto text-center mt-4">
             <button
               className="btn bg-[#126e82] text-white font-bold"
-              onClick={() => navigate(`/scholarship-details/${item?._id}`)}
+              onClick={() => navigate(`scholarship-details/${item?._id}`)}
             >
               Scholarship Details
             </button>

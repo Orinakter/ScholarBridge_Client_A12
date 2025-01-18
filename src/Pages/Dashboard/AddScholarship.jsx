@@ -17,9 +17,7 @@ const AddScholarship = () => {
         const universityCountry = e.target.universityCountry.value;
         const universityCity = e.target.universityCity.value;
         const universityRank = e.target.universityRank.value;
-        // const subjectCategory = e.target.subjectCategory.value;
-        // const scholarshipCategory = e.target.scholarshipCategory.value;
-        // const degree = e.target.degree.value;
+        
         const tutionFee = e.target.tutionFee.value;
         const applicationFees = e.target.applicationFees.value;
         const serviceCharge = e.target.serviceCharge.value;
@@ -39,7 +37,10 @@ const AddScholarship = () => {
             serviceCharge,
             ApplicationDeadline,
             postDate,
-            postEmail
+            postEmail,
+            subjectCategory,
+            scholarshipCategory,
+            degree
         }
        
         await axios.post(`http://localhost:5000/scholarBridge`,addScholarshipInfo)
@@ -47,7 +48,7 @@ const AddScholarship = () => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Schoolarship added successfully",
+                title: "Scholarship added successfully",
                 showConfirmButton: false,
                 timer: 1500
               });

@@ -11,6 +11,7 @@ import MyApplication from "../Pages/Dashboard/MyApplication";
 import MyReviews from "../Pages/Dashboard/MyReviews";
 import AddScholarship from "../Pages/Dashboard/AddScholarship";
 import JoinConversation from "../Pages/JoinConversation";
+import ScholarshipDetails from "../Pages/ScholarshipDetails";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: 'join-conversation',
         element: <JoinConversation/>
+      },
+      {
+        path: 'scholarship-details/:id',
+        element: <ScholarshipDetails/>
       }
     ],
   },
