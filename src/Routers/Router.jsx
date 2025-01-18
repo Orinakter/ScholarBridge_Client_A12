@@ -10,6 +10,7 @@ import MyProfile from "../Pages/Dashboard/MyProfile";
 import MyApplication from "../Pages/Dashboard/MyApplication";
 import MyReviews from "../Pages/Dashboard/MyReviews";
 import AddScholarship from "../Pages/Dashboard/AddScholarship";
+import JoinConversation from "../Pages/JoinConversation";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: 'all-scholarship',
         element: <AllScholarship/>
+      },
+      {
+        path: 'join-conversation',
+        element: <JoinConversation/>
       }
     ],
   },

@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import card1 from '../assets/images/test-1.jpg'
 import card2 from '../assets/images/test-2.jpg'
 import card3 from '../assets/images/test-3.jpg'
@@ -20,11 +21,15 @@ const Testimonials = () => {
           Join our vibrant Scholar Community to connect with like-minded individuals, share experiences, and gain valuable insights. Access exclusive resources, mentorship opportunities, and collaborative projects. Together, we inspire and empower each other to achieve academic success and beyond. Start your journey of growth and support—become a part of our community today
           </p>
           <div className="text-center">
+            <Link to="join-conversation">
             <button className="px-6 py-3 bg-[#126e82] text-white font-bold rounded-md  hover:bg-[#126e82] ">
               Join the Conversation
             </button>
+            </Link>
           </div>
         </div>
+
+        
 
        
         <div>
