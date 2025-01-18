@@ -3,6 +3,7 @@ import Banner from '../HomeLayOut/Banner';
 import TopScholarShip from '../Components/TopScholarShip';
 import AllSchoolarship from '../Components/AllSchoolarship';
 import Testimonials from '../Components/Testimonials';
+import FAQsAndSupport from '../Components/FAQsAndSupport';
 
 const HomePage = () => {
     return (
@@ -12,6 +13,7 @@ const HomePage = () => {
             <TopScholarShip></TopScholarShip>
             <AllSchoolarship></AllSchoolarship>
             <Testimonials></Testimonials>
+            <FAQsAndSupport></FAQsAndSupport>
             </div>
         </div>
     );
