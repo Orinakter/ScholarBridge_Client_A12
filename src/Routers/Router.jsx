@@ -12,6 +12,7 @@ import MyReviews from "../Pages/Dashboard/MyReviews";
 import AddScholarship from "../Pages/Dashboard/AddScholarship";
 import JoinConversation from "../Pages/JoinConversation";
 import ScholarshipDetails from "../Pages/ScholarshipDetails";
+import ManageUser from "../Pages/Dashboard/ManageUser";
 
 export const router = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ export const router = createBrowserRouter([
     path: '/dashboard',
     element: <DashboardLayout/>,
     children:[
-      //  User panl
+      //  User panel
       {
         path: 'my-profile',
         element: <MyProfile/>
@@ -66,6 +67,11 @@ export const router = createBrowserRouter([
         path: 'add-scholarship',
         element: <AddScholarship></AddScholarship>
       },
+      // Admin Panle
+      {
+        path: 'manage-user',
+        element: <ManageUser/>
+      }
 
       
 

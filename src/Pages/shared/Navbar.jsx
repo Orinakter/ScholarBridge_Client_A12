@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router";
 import logo from "../../assets/images/logo.png";
 import { useContext } from "react";
 import { authorizedContext } from "../../AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 const Navbar = () => {
   const { user, logOut } = useContext(authorizedContext);
   const signoutHandler = () => {
