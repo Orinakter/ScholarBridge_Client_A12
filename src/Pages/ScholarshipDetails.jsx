@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react";
 import { useParams } from "react-router";
 
+
 const ScholarshipDetails = () => {
   const { id } = useParams();
   const { data:scholarshipData={}} = useQuery({
@@ -17,7 +18,7 @@ const ScholarshipDetails = () => {
   
 
   return (
-    <div className="mt-24 md:max-w-[800px] border-2 mx-auto rounded-xl bg-[#E6F2FA]">
+    <div className="mt-24 md:max-w-[1220px] border-2 mx-auto rounded-xl bg-[#E6F2FA]">
       <div
         key={scholarshipData?._id}
         className="flex flex-col lg:flex-row justify-center items-center gap-16 p-8"
@@ -78,6 +79,10 @@ const ScholarshipDetails = () => {
           </div>
         </div>
       </div>
+
+      
+
+     
     </div>
     
   );

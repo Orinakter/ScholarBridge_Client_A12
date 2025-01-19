@@ -4,8 +4,8 @@ import { AiFillHome } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { MdOutlineSettingsApplications, MdReviews } from "react-icons/md";
 const Dashboard = () => {
-  const isUser = !true;
-  const isAdmin = false;
+  const isUser = true;
+  const isAdmin = !false;
   const isModerator = true;
   return (
     <div className="px-10 space-y-4">
