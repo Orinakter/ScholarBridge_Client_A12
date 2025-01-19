@@ -11,6 +11,8 @@ const ManageUser = () => {
   const axiosSecure = useAxiosSecure();
   //   console.log(users);
   if (isUsersLoading) return <Loading />;
+
+  //   Role Change by clicking button
   const handleRole = (user, userRole) => {
     const roleInfo = {
       userId: user._id,
@@ -34,6 +36,31 @@ const ManageUser = () => {
           Swal.fire({
             title: `${user.name}`,
             text: ` Now ${userRole}`,
+            icon: "success",
+          });
+        }
+      }
+    });
+  };
+  // Delete user by call this function
+  const handleUserDelete = (user) => {
+    const userId = user._id;
+    console.log(userId);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axiosSecure.delete(`/user/${userId}`);
+        if (res.data.deletedCount === 1) {
+          Swal.fire({
+            title: `${user.name} Deleted!`,
+            text: `${user.name} not able to access`,
             icon: "success",
           });
         }
@@ -102,7 +129,10 @@ const ManageUser = () => {
                   </button>
                 </td>
                 <td>
-                  <button className="btn text-red-500 text-lg">
+                  <button
+                    onClick={() => handleUserDelete(user)}
+                    className="btn text-red-500 text-lg"
+                  >
                     <FaTrash />
                   </button>
                 </td>
