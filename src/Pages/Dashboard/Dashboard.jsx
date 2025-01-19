@@ -3,26 +3,26 @@ import { NavLink } from "react-router";
 import { AiFillHome } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { MdOutlineSettingsApplications, MdReviews } from "react-icons/md";
+import useUserRole from "../../hooks/useUserRole";
 const Dashboard = () => {
-  const isUser = true;
-  const isAdmin = !false;
-  const isModerator = true;
+  const { userRole, isUserRoleLoading } = useUserRole();
+
   return (
     <div className="px-10 space-y-4">
       <h1 className="font-bold text-xl text-white text-center">Dashboard</h1>
-      {isUser && (
+      {userRole === "user" && (
         <>
-        
           <NavLink to="my-application" className="btn w-full">
-          <MdOutlineSettingsApplications className="text-lg"/>My Application
+            <MdOutlineSettingsApplications className="text-lg" />
+            My Application
           </NavLink>
           <NavLink to="my-reviews" className="btn w-full">
-          <MdReviews className="text-lg" /> My Reviews
+            <MdReviews className="text-lg" /> My Reviews
           </NavLink>
         </>
       )}
 
-      {isAdmin && (
+      {userRole === "admin" && (
         <>
           <NavLink to="my-profile" className="btn w-full">
             Admin
@@ -44,7 +44,7 @@ const Dashboard = () => {
           </NavLink>
         </>
       )}
-      {isModerator && (
+      {userRole === "moderator" && (
         <>
           <NavLink to="my-profile" className="btn w-full">
             Manage Scholarships
