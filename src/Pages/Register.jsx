@@ -12,7 +12,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 
 const Register = () => {
-  const { registerUser, userProfileUpdate, googleLoginBtn, handleGoogleLogin } =
+  const { registerUser, userProfileUpdate, googleLoginBtn, handleGoogleLogin,logOut } =
     useContext(authorizedContext);
   const axiosPublic = useAxiosPublic();
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +29,9 @@ const Register = () => {
     registerUser(email, password).then(async (credential) => {
       const res = await axiosPublic.post("/users", userInfo);
       console.log(res.data);
-     
+      await userProfileUpdate(name, photo);
+      await logOut()
+      toast.success('user created')
     });
 
     console.log(data);

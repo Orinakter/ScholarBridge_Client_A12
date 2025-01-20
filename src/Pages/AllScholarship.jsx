@@ -17,7 +17,7 @@ const AllScholarship = () => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
             {
-                scholarshipData.map(scholarship=>(
+                scholarshipData?.map(scholarship=>(
                     <div key={scholarship?._id} className="border-2 p-8 rounded-xl">
                         <img src={scholarship?.universityImage} alt="" className='w-full h-[250px] rounded-xl' />
                         <h2 className='mt-4'><span className='text-[#126e82] font-semibold '>UniversityName : </span>{scholarship?.universityName}</h2>

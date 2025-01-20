@@ -136,7 +136,6 @@ const Login = () => {
             <p className="text-center text-sm  mt-4">
               Don't have an Account?
               <Link to="/register">
-              
                 <span className="text-[#126e82] hover:underline font-semibold">
                   Register Now
                 </span>

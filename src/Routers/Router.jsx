@@ -13,69 +13,82 @@ import AddScholarship from "../Pages/Dashboard/AddScholarship";
 import JoinConversation from "../Pages/JoinConversation";
 import ScholarshipDetails from "../Pages/ScholarshipDetails";
 import ManageUser from "../Pages/Dashboard/ManageUser";
+import AllAppliedScholarship from "../Pages/Dashboard/AllAppliedScholarship";
+
+import MangeScholarships from "../Pages/Dashboard/MangeScholarships";
+import Payment from "../Pages/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <HomePage />,
       },
       {
-        path: 'login',
-        element: <Login/>
+        path: "login",
+        element: <Login />,
       },
       {
-        path: 'register',
-        element: <Register/>
+        path: "register",
+        element: <Register />,
       },
       {
-        path: 'all-scholarship',
-        element: <AllScholarship/>
+        path: "all-scholarship",
+        element: <AllScholarship />,
       },
       {
-        path: 'join-conversation',
-        element: <JoinConversation/>
+        path: "join-conversation",
+        element: <JoinConversation />,
       },
       {
-        path: 'scholarship-details/:id',
-        element: <ScholarshipDetails/>
-      }
+        path: "scholarship-details/:id",
+        element: <ScholarshipDetails />,
+      },
+      {
+        path: "scholarship-details/:id/payment",
+        element: <Payment/> ,
+      },
     ],
   },
   {
-    path: '/dashboard',
-    element: <DashboardLayout/>,
-    children:[
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
       //  User panel
       {
-        path: 'my-profile',
-        element: <MyProfile/>
+        path: "my-profile",
+        element: <MyProfile />,
       },
       {
-        path: 'my-application',
-        element: <MyApplication></MyApplication>
+        path: "my-application",
+        element: <MyApplication></MyApplication>,
       },
       {
-        path: 'my-reviews',
-        element: <MyReviews></MyReviews>
+        path: "my-reviews",
+        element: <MyReviews></MyReviews>,
       },
       {
-        path: 'add-scholarship',
-        element: <AddScholarship></AddScholarship>
+        path: "add-scholarship",
+        element: <AddScholarship></AddScholarship>,
       },
       // Admin Panle
       {
-        path: 'manage-user',
-        element: <ManageUser/>
-      }
-
-      
-
-
-    ]
-  }
+        path: "manage-user",
+        element: <ManageUser />,
+      },
+      // Moderator
+      {
+        path: "all-applied-scholarship",
+        element: <AllAppliedScholarship/>
+      },
+      {
+        path: "manage-scholarship",
+        element: <MangeScholarships></MangeScholarships>
+      },
+    ],
+  },
 ]);

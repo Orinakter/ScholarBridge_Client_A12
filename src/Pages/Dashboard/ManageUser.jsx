@@ -107,7 +107,7 @@ const ManageUser = () => {
                     onClick={() => {
                       handleRole(user, "user");
                     }}
-                    className="btn text-lg"
+                    className="btn text-lg tooltip" data-tip='User'
                   >
                     <FaUser />
                   </button>
@@ -115,7 +115,7 @@ const ManageUser = () => {
                     onClick={() => {
                       handleRole(user, "admin");
                     }}
-                    className="btn text-lg"
+                    className="btn text-lg tooltip" data-tip='Admin'
                   >
                     <MdAdminPanelSettings />
                   </button>
@@ -123,7 +123,7 @@ const ManageUser = () => {
                     onClick={() => {
                       handleRole(user, "moderator");
                     }}
-                    className="btn text-lg"
+                    className="btn text-lg tooltip" data-tip='Moderator'
                   >
                     <MdAddModerator />
                   </button>

@@ -37,6 +37,7 @@ const AuthProvider = ({ children }) => {
       unRegister();
     };
   }, []);
+  // console.log(user);
 
   const userProfileUpdate = (name, photo) => {
     const userData = {

@@ -41,6 +41,8 @@ const AddScholarship = () => {
             subjectCategory,
             scholarshipCategory,
             degree
+
+            
         }
        
         await axios.post(`http://localhost:5000/scholarBridge`,addScholarshipInfo)
