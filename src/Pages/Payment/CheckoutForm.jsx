@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { authorizedContext } from "../../AuthProvider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useForm } from "react-hook-form";
+import useTopScholarship from "../../hooks/useTopScholarship";
 
 const CheckoutForm = ({ id, amount }) => {
   const stripe = useStripe();
@@ -14,6 +15,7 @@ const CheckoutForm = ({ id, amount }) => {
   const [error, setError] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [paymentSuccessful, setPaymentSuccessful] = useState(false); // New state to track payment success
+  const { scholarShip } = useTopScholarship(id);
 
   useEffect(() => {
     if (amount > 0) {
@@ -83,15 +85,27 @@ const CheckoutForm = ({ id, amount }) => {
     }
   };
 
+  const date = new Date();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
-  }
+    data.name = user.displayName;
+    data.userPhoto = user.photoURL;
+    data.scholarshipID = id;
+    data.date = date;
+    data.paymentStatus = true;
+    data.userEmail = user.email;
+    const res = await axiosSecure.post("/scholarship-apply", data);
+    if (res.data) {
+      alert("Data insert");
+      console.log(res.data);
+    }
+  };
 
   return (
     <div>
@@ -224,6 +238,8 @@ const CheckoutForm = ({ id, amount }) => {
               </div>
               <input
                 {...register("universityName", { required: true })}
+                defaultValue={scholarShip.universityName}
+                readOnly
                 type="text"
                 placeholder="University Name"
                 className="input input-bordered w-full max-w-xs"
@@ -236,6 +252,8 @@ const CheckoutForm = ({ id, amount }) => {
               </div>
               <input
                 {...register("scholarShipCategory", { required: true })}
+                defaultValue={scholarShip.scholarshipCategory}
+                readOnly
                 type="text"
                 placeholder="Scholarship Category "
                 className="input input-bordered w-full max-w-xs"
@@ -248,6 +266,8 @@ const CheckoutForm = ({ id, amount }) => {
               </div>
               <input
                 {...register("subjectCategory", { required: true })}
+                defaultValue={scholarShip.subjectCategory}
+                readOnly
                 type="text"
                 placeholder="Subject Category"
                 className="input input-bordered w-full max-w-xs"
