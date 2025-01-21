@@ -16,6 +16,7 @@ const CheckoutForm = ({ id, amount }) => {
   const [transactionId, setTransactionId] = useState("");
   const [paymentSuccessful, setPaymentSuccessful] = useState(false); // New state to track payment success
   const { scholarShip } = useTopScholarship(id);
+  console.log(scholarShip);
 
   useEffect(() => {
     if (amount > 0) {
@@ -100,6 +101,12 @@ const CheckoutForm = ({ id, amount }) => {
     data.date = date;
     data.paymentStatus = true;
     data.userEmail = user.email;
+    data.feedback = "pending";
+    data.status = "pending";
+    data.universityCity = scholarShip.universityCity;
+    data.applicationFees = scholarShip.applicationFees;
+    data.serviceCharge = scholarShip.serviceCharge;
+
     const res = await axiosSecure.post("/scholarship-apply", data);
     if (res.data) {
       alert("Data insert");

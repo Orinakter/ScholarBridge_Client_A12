@@ -12,14 +12,14 @@ const MyProfile = () => {
         <div className="flex flex-col items-center">
          
           <img
-            src={user.image || "https://via.placeholder.com/150"}
+            src={user?.image || "https://via.placeholder.com/150"}
             alt="User"
             className="w-24 h-24 rounded-full border-4 border-blue-500"
           />
 
           
           <h2 className="mt-4 text-2xl font-semibold text-gray-800">
-            {user.name || "John Doe"}
+            {user?.name || "John Doe"}
           </h2>
 
           
@@ -39,7 +39,7 @@ const MyProfile = () => {
           <div className="flex items-center justify-between mb-4">
             <span className="text-gray-500 font-medium">Account Created:</span>
             <span className="text-gray-700">
-              {user.createdAt || "2025-01-01"}
+              {user?.createdAt || "2025-01-01"}
             </span>
           </div>
         </div>

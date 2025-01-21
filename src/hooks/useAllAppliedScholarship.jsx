@@ -3,7 +3,7 @@ import useAxiosSecure from "./useAxiosSecure";
 
 const useAllAppliedScholarship = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: appliedScholarships = [], isLoading: isScholarshipLoading } =
+  const { data: appliedScholarships = [], isLoading: isScholarshipLoading, refetch } =
     useQuery({
       queryKey: ["applied-scholarship"],
       queryFn: async () => {
@@ -11,7 +11,7 @@ const useAllAppliedScholarship = () => {
         return res.data;
       },
     });
-  return { appliedScholarships, isScholarshipLoading };
+  return { appliedScholarships, isScholarshipLoading, refetch };
 };
 
 export default useAllAppliedScholarship;

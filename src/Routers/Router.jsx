@@ -13,10 +13,9 @@ import AddScholarship from "../Pages/Dashboard/AddScholarship";
 import JoinConversation from "../Pages/JoinConversation";
 import ScholarshipDetails from "../Pages/ScholarshipDetails";
 import ManageUser from "../Pages/Dashboard/ManageUser";
-import AllAppliedScholarship from "../Pages/Dashboard/AllAppliedScholarship";
-
-import MangeScholarships from "../Pages/Dashboard/MangeScholarships";
 import Payment from "../Pages/Payment/Payment";
+import AllAppliedScholarship from "../Pages/Dashboard/AllAppliedScholarship";
+import ManageScholarShip from "../Pages/Dashboard/ManageScholarShip";
 
 export const router = createBrowserRouter([
   {
@@ -36,10 +35,7 @@ export const router = createBrowserRouter([
         path: "register",
         element: <Register />,
       },
-      {
-        path: "all-scholarship",
-        element: <AllScholarship />,
-      },
+      
       {
         path: "join-conversation",
         element: <JoinConversation />,
@@ -51,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "scholarship-details/:id/payment",
         element: <Payment/> ,
+      },
+      {
+        path: "all-scholarship-page",
+        element: <AllScholarship></AllScholarship> ,
       },
     ],
   },
@@ -87,7 +87,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "manage-scholarship",
-        element: <MangeScholarships></MangeScholarships>
+        element: <ManageScholarShip/>
       },
     ],
   },

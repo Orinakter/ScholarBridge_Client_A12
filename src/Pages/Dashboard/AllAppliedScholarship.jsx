@@ -1,14 +1,9 @@
-import { FcCancel } from "react-icons/fc";
-import Loading from "../../Components/Loading";
 import useAllAppliedScholarship from "../../hooks/useAllAppliedScholarship";
-import { TbListDetails } from "react-icons/tb";
-import { MdFeedback } from "react-icons/md";
 
 const AllAppliedScholarship = () => {
-  const { appliedScholarships, isScholarshipLoading } =
+  const { appliedScholarships, isScholarshipLoading, refetch } =
     useAllAppliedScholarship();
   console.log(appliedScholarships);
-  if (isScholarshipLoading) return <Loading />;
   return (
     <div>
       <div className="overflow-x-auto">
@@ -16,49 +11,56 @@ const AllAppliedScholarship = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>SI</th>
+              <th>
+               SI
+              </th>
               <th>University Name</th>
-              <th>Applicant Email</th>
-              <th>Applied Status</th>
-              <th>Actions</th>
+              <th>Scholarship Name</th>
+              <th>Favorite Color</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            {appliedScholarships.map((item, i) => (
-              <tr key={item._id}>
-                <th>{i + 1}</th>
-                <td>
-                  <div className="flex items-center gap-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle h-12 w-12">
-                        <img
-                          src={item.universityImage}
-                          alt="Avatar Tailwind CSS Component"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-bold">Hart Hagerty</div>
+            <tr>
+              <th>
+                <label>
+                  <input type="checkbox" className="checkbox" />
+                </label>
+              </th>
+              <td>
+                <div className="flex items-center gap-3">
+                  <div className="avatar">
+                    <div className="mask mask-squircle h-12 w-12">
+                      <img
+                        src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                        alt="Avatar Tailwind CSS Component"
+                      />
                     </div>
                   </div>
-                </td>
-                <td>Zemlak, Daniel and Leannon</td>
-                <td>Purple</td>
-                <th className="space-x-2">
-                  <button className="btn text-lg tooltip" data-tip="Details">
-                    <TbListDetails />{" "}
-                  </button>
-                  <button className="btn text-lg tooltip" data-tip="FeedBack">
-                    <MdFeedback />{" "}
-                  </button>
-                  <button className="btn text-lg tooltip" data-tip="Cancel">
-                    <FcCancel />{" "}
-                  </button>
-                </th>
-              </tr>
-            ))}
+                  <div>
+                    <div className="font-bold">Hart Hagerty</div>
+                    <div className="text-sm opacity-50">United States</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                Zemlak, Daniel and Leannon
+                <br />
+                <span className="badge badge-ghost badge-sm">
+                  Desktop Support Technician
+                </span>
+              </td>
+              <td>Purple</td>
+              <th>
+                <button className="btn btn-ghost btn-xs">details</button>
+              </th>
+            </tr>
+         
+           
+           
           </tbody>
+         
         </table>
       </div>
     </div>
