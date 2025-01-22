@@ -16,6 +16,8 @@ import ManageUser from "../Pages/Dashboard/ManageUser";
 import Payment from "../Pages/Payment/Payment";
 import AllAppliedScholarship from "../Pages/Dashboard/AllAppliedScholarship";
 import ManageScholarShip from "../Pages/Dashboard/ManageScholarShip";
+import ReApply from "../Pages/Dashboard/ReApply";
+
 
 export const router = createBrowserRouter([
   {
@@ -35,7 +37,7 @@ export const router = createBrowserRouter([
         path: "register",
         element: <Register />,
       },
-      
+
       {
         path: "join-conversation",
         element: <JoinConversation />,
@@ -46,11 +48,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "scholarship-details/:id/payment",
-        element: <Payment/> ,
+        element: <Payment />,
       },
       {
         path: "all-scholarship-page",
-        element: <AllScholarship></AllScholarship> ,
+        element: <AllScholarship></AllScholarship>,
       },
     ],
   },
@@ -75,6 +77,10 @@ export const router = createBrowserRouter([
         path: "add-scholarship",
         element: <AddScholarship></AddScholarship>,
       },
+      {
+        path: "update-apply/:id",
+        element: <ReApply/>,
+      },
       // Admin Panle
       {
         path: "manage-user",
@@ -83,11 +89,11 @@ export const router = createBrowserRouter([
       // Moderator
       {
         path: "all-applied-scholarship",
-        element: <AllAppliedScholarship/>
+        element: <AllAppliedScholarship />,
       },
       {
         path: "manage-scholarship",
-        element: <ManageScholarShip/>
+        element: <ManageScholarShip />,
       },
     ],
   },

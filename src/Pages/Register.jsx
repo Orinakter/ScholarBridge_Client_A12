@@ -1,5 +1,6 @@
-import Lottie from "lottie-react";
 import React, { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import Lottie from "lottie-react";
 import { FaUserLarge } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineMail, MdPhotoLibrary } from "react-icons/md";
@@ -8,34 +9,71 @@ import { Link, useNavigate } from "react-router";
 import registerLottieData from "../assets/Lotties/loginLottie.json";
 import { authorizedContext } from "../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
-import useAxiosPublic from "../hooks/useAxiosPublic";
-import { useForm } from "react-hook-form";
+
 
 const Register = () => {
-  const { registerUser, userProfileUpdate, googleLoginBtn, handleGoogleLogin,logOut } =
+  const { registerUser, userProfileUpdate, handleGoogleLogin, logOut } =
     useContext(authorizedContext);
-  const axiosPublic = useAxiosPublic();
+  
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordError, setPasswordError] = useState(""); // For password validation
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
+
+  const validatePassword = (password) => {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,}$/;
+    if (!regex.test(password)) {
+      setPasswordError(
+        "Password must have at least 1 uppercase letter, 1 lowercase letter, 1 special character, and be at least 6 characters long."
+      );
+      return false;
+    }
+    setPasswordError("");
+    return true;
+  };
+
   const onSubmit = (data) => {
     const { name, email, password, photo } = data;
-    const userInfo = {
-      name,
-      email,
-      photo,
-    };
 
-    registerUser(email, password).then(async (credential) => {
-      const res = await axiosPublic.post("/users", userInfo);
-      console.log(res.data);
-      await userProfileUpdate(name, photo);
-      await logOut()
-      toast.success('user created')
-    });
+    // Validate password
+    if (!validatePassword(password)) return;
 
-    console.log(data);
+    
+
+    setIsLoading(true);
+    registerUser(email, password)
+      .then(async (credential) => {
+       
+        await userProfileUpdate(name, photo);
+        await logOut();
+        toast.success("User created successfully!");
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.error("Registration error:", error);
+        toast.error("Failed to create user.");
+      })
+      .finally(() => setIsLoading(false));
   };
+
+  const handleGoogleLoginbtn = async()=>{
+    try {
+      await  handleGoogleLogin()
+      await navigate("/")
+      toast.success("User Register successfully")
+
+      
+      
+    }
+    catch (error){
+      console.log(error);
+      
+    }
+  }
+
+ 
+
+
 
   return (
     <div>
@@ -58,14 +96,13 @@ const Register = () => {
               Registration
             </h2>
 
-            {/*  Form Starts */}
+            {/* Form Starts */}
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="flex justify-start items-center gap-2 mb-2">
                   <FaUserLarge className="text-xl text-[#126e82]" />
                   <span className="text-[#126e82]">Name</span>
                 </label>
-                {/* Name */}
                 <input
                   type="text"
                   {...register("name", { required: true })}
@@ -79,7 +116,6 @@ const Register = () => {
                   <MdPhotoLibrary className="text-xl text-[#126e82]" />
                   <span className="text-[#126e82]">Photo-URL</span>
                 </label>
-                {/* Photo URL */}
                 <input
                   {...register("photo", { required: true })}
                   type="url"
@@ -93,7 +129,6 @@ const Register = () => {
                   <MdOutlineMail className="text-xl text-[#126e82]" />
                   <span className="text-[#126e82]">Email</span>
                 </label>
-                {/* Email */}
                 <input
                   {...register("email", { required: true })}
                   type="email"
@@ -107,14 +142,17 @@ const Register = () => {
                   <RiLockPasswordFill className="text-xl text-[#126e82]" />
                   <span className="text-[#126e82]">Password</span>
                 </label>
-                {/* Password */}
                 <input
                   {...register("password", { required: true })}
                   type="password"
                   placeholder="Enter your password"
                   className="input input-bordered"
                   aria-label="Enter your password"
+                  onChange={(e) => validatePassword(e.target.value)}
                 />
+                {passwordError && (
+                  <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+                )}
               </div>
               <div className="form-control mt-3">
                 <button
@@ -132,7 +170,7 @@ const Register = () => {
             </div>
             <div className="text-center flex items-center gap-3">
               <button
-                onClick={handleGoogleLogin}
+                onClick={handleGoogleLoginbtn}
                 className="btn w-full bg-white py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition duration-300"
                 disabled={isLoading}
               >

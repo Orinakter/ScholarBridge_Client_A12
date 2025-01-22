@@ -24,7 +24,6 @@ const Dashboard = () => {
 
       {userRole === "admin" && (
         <>
-        
           <NavLink to="add-scholarship" className="btn w-full">
             Add Scholarship
           </NavLink>
@@ -44,7 +43,7 @@ const Dashboard = () => {
       )}
       {userRole === "moderator" && (
         <>
-          <NavLink to="my-profile" className="btn w-full">
+          <NavLink to="manage-scholarship" className="btn w-full">
             Manage Scholarships
           </NavLink>
           <NavLink to="my-profile" className="btn w-full">

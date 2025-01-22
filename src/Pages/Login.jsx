@@ -9,7 +9,7 @@ import { authorizedContext } from "../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { loginUser, googleLoginBtn } = useContext(authorizedContext);
+  const { loginUser, handleGoogleLogin } = useContext(authorizedContext);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -37,21 +37,18 @@ const Login = () => {
       });
   };
 
-  const googleLoginHandler = () => {
-    googleLoginBtn()
-      .then((result) => {
-        if (state) {
-          navigate(state);
-        } else {
-          navigate("/");
-        }
-
-        toast.success("User Login Successfully");
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      });
-  };
+  const handleGoogleLoginbtn = async()=>{
+      try {
+        await  handleGoogleLogin()
+         await navigate("/")
+              toast.success("User Login successfully")
+      }
+      catch (error){
+        console.log(error);
+        
+      }
+    }
+  
   return (
     <div>
       <div className=" flex  items-center justify-center mt-12">
@@ -124,7 +121,7 @@ const Login = () => {
 
             <div className="text-center flex items-center gap-3">
               <button
-                onClick={googleLoginHandler}
+                onClick={handleGoogleLoginbtn}
                 className="btn w-full bg-white py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition duration-300"
               >
                 <span className="text-2xl">

@@ -7,7 +7,7 @@ const useAllAppliedScholarship = () => {
     useQuery({
       queryKey: ["applied-scholarship"],
       queryFn: async () => {
-        const res = await axiosSecure.get("/scholarBridge");
+        const res = await axiosSecure.get("/scholarship-apply");
         return res.data;
       },
     });

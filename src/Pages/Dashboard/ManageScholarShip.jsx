@@ -3,6 +3,7 @@ import { CiEdit } from "react-icons/ci";
 import { TbListDetails, TbCancel } from "react-icons/tb";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Heading from "../../Components/Heading";
 const ManageScholarShip = () => {
   const { allScholarship, refetch } = useAllScholarship();
   const axiosSecure = useAxiosSecure();
@@ -36,6 +37,7 @@ const ManageScholarShip = () => {
 
   return (
     <div>
+      <Heading heading="Manage ScholarShip"/>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

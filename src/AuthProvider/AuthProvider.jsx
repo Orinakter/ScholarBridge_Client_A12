@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.init";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 export const authorizedContext = createContext();
 
@@ -16,6 +17,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const provider = new GoogleAuthProvider();
+  const axiosPublic = useAxiosPublic();
 
   const registerUser = (email, password) => {
     setLoading(true);
@@ -27,17 +29,67 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // useEffect(() => {
+  //   const unRegister = onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //     if(currentUser){
+  //       const userInfo = {
+  //         name: currentUser?.displayName,
+  //         email:currentUser?.email,
+  //         photo:currentUser?.photoURL
+  //       };
+  //       setTimeOut(async()=>{
+  //         const res = await axiosPublic.post("/users", userInfo);
+
+  //       },2000)
+
+  //     }
+
+     
+  //     setLoading(false);
+  //   });
+
+  //   return () => {
+  //     unRegister();
+  //   };
+  // }, []);
+  // console.log(user);
+
+
   useEffect(() => {
     const unRegister = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      if (currentUser) {
+        const userInfo = {
+          name: currentUser?.displayName,
+          email: currentUser?.email,
+          photo: currentUser?.photoURL,
+        };
+  
+        // Use setTimeout properly
+        setTimeout(async () => {
+          try {
+            const res = await axiosPublic.post("/users", userInfo);
+            console.log(res.data); // Handle the response as needed
+          } catch (error) {
+            console.error("Error posting user info:", error);
+          }
+        }, 2000);
+      }
+  
       setLoading(false);
     });
-
+  
     return () => {
       unRegister();
     };
   }, []);
-  // console.log(user);
+
+
+
+
+
+
 
   const userProfileUpdate = (name, photo) => {
     const userData = {
