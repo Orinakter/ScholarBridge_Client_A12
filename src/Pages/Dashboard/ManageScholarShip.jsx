@@ -78,9 +78,9 @@ const ManageScholarShip = () => {
                 <td>{item.degree}</td>
                 <td>{item.applicationFees}</td>
                 <td className="space-x-4">
-                  <button className="btn">
+                  <Link to={`/dashboard/details/${item._id}`} className="btn">
                     <TbListDetails />
-                  </button>
+                  </Link>
                   <Link to={`/dashboard/edit-scholarship/${item._id}`}  className="btn">
                     <CiEdit />
                   </Link>

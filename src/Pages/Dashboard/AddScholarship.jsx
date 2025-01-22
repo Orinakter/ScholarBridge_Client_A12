@@ -91,20 +91,6 @@ const AddScholarship = () => {
               required
             />
           </div>
-
-          {/* <div>
-            <label className="block text-sm font-medium text-gray-700">
-              University Image URL
-            </label>
-            <input
-              type="text"
-              name="universityImage"
-              placeholder="Enter image URL"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#126e82] focus:border-[#126e82] sm:text-sm"
-              required
-            />
-          </div> */}
-
           <div>
             <label className="block text-sm font-medium text-[#126e82]">
               University Image

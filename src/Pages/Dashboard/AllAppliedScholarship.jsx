@@ -70,8 +70,17 @@ const AllAppliedScholarship = () => {
                 </td>
                 <td>{item.status}</td>
                 <td>
-                  {item.status === "Approve" ? (
-                    <span>Review</span>
+                  {item.status === "Approve" ? (<>
+                  {
+                    item.review ? <button disabled className="btn">Review</button>: <Link
+                    to={`/dashboard/add-review/${item._id}`}
+                    className="btn"
+                  >
+                    Review
+                  </Link>
+                  }
+                  </>
+                    
                   ) : (
                     <button
                       onClick={() => manageStatus(item._id)}

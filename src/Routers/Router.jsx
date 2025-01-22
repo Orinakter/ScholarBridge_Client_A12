@@ -18,7 +18,9 @@ import AllAppliedScholarship from "../Pages/Dashboard/AllAppliedScholarship";
 import ManageScholarShip from "../Pages/Dashboard/ManageScholarShip";
 import ReApply from "../Pages/Dashboard/ReApply";
 import EditScholarShip from "../Pages/Dashboard/EditScholarShip";
-
+import Details from "../Pages/Dashboard/Details";
+import AddReview from "../Pages/Dashboard/AddReview";
+import ManageReview from "../Pages/Dashboard/ManageReview";
 
 export const router = createBrowserRouter([
   {
@@ -80,7 +82,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "update-apply/:id",
-        element: <ReApply/>,
+        element: <ReApply />,
+      },
+      {
+        path: "manage-review",
+        element: <ManageReview/>
       },
       // Admin Panle
       {
@@ -88,8 +94,16 @@ export const router = createBrowserRouter([
         element: <ManageUser />,
       },
       {
-        path: 'edit-scholarship/:id',
-        element: <EditScholarShip/>
+        path: "edit-scholarship/:id",
+        element: <EditScholarShip />,
+      },
+      {
+        path: "details/:id",
+        element: <Details />,
+      },
+      {
+        path: "add-review/:id",
+        element: <AddReview />,
       },
       // Moderator
       {

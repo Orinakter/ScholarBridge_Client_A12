@@ -36,7 +36,7 @@ const Dashboard = () => {
           <NavLink to="manage-user" className="btn w-full">
             Manage User
           </NavLink>
-          <NavLink to="my-profile" className="btn w-full">
+          <NavLink to="manage-review" className="btn w-full">
             Manage Review
           </NavLink>
         </>

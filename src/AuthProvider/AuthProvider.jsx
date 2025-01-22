@@ -29,32 +29,6 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // useEffect(() => {
-  //   const unRegister = onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-  //     if(currentUser){
-  //       const userInfo = {
-  //         name: currentUser?.displayName,
-  //         email:currentUser?.email,
-  //         photo:currentUser?.photoURL
-  //       };
-  //       setTimeOut(async()=>{
-  //         const res = await axiosPublic.post("/users", userInfo);
-
-  //       },2000)
-
-  //     }
-
-     
-  //     setLoading(false);
-  //   });
-
-  //   return () => {
-  //     unRegister();
-  //   };
-  // }, []);
-  // console.log(user);
-
 
   useEffect(() => {
     const unRegister = onAuthStateChanged(auth, (currentUser) => {
@@ -84,12 +58,6 @@ const AuthProvider = ({ children }) => {
       unRegister();
     };
   }, []);
-
-
-
-
-
-
 
   const userProfileUpdate = (name, photo) => {
     const userData = {
