@@ -17,6 +17,7 @@ import Payment from "../Pages/Payment/Payment";
 import AllAppliedScholarship from "../Pages/Dashboard/AllAppliedScholarship";
 import ManageScholarShip from "../Pages/Dashboard/ManageScholarShip";
 import ReApply from "../Pages/Dashboard/ReApply";
+import EditScholarShip from "../Pages/Dashboard/EditScholarShip";
 
 
 export const router = createBrowserRouter([
@@ -85,6 +86,10 @@ export const router = createBrowserRouter([
       {
         path: "manage-user",
         element: <ManageUser />,
+      },
+      {
+        path: 'edit-scholarship/:id',
+        element: <EditScholarShip/>
       },
       // Moderator
       {

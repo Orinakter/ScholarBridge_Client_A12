@@ -4,12 +4,13 @@ import { TbListDetails, TbCancel } from "react-icons/tb";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import Heading from "../../Components/Heading";
+import { Link } from "react-router";
 const ManageScholarShip = () => {
   const { allScholarship, refetch } = useAllScholarship();
   const axiosSecure = useAxiosSecure();
   console.log(allScholarship);
 
-  const handleEdit = (item) => {};
+
 
   const handleDelete = (item) => {
     Swal.fire({
@@ -55,7 +56,7 @@ const ManageScholarShip = () => {
           <tbody>
             {/* row 1 */}
             {allScholarship.map((item, i) => (
-              <tr>
+              <tr key={item._id}>
                 <th>{i + 1}</th>
                 <td>{item.scholarshipName}</td>
                 <td>
@@ -80,9 +81,9 @@ const ManageScholarShip = () => {
                   <button className="btn">
                     <TbListDetails />
                   </button>
-                  <button onClick={() => handleEdit(item)} className="btn">
+                  <Link to={`/dashboard/edit-scholarship/${item._id}`}  className="btn">
                     <CiEdit />
-                  </button>
+                  </Link>
                   <button onClick={() => handleDelete(item)} className="btn">
                     <TbCancel />
                   </button>

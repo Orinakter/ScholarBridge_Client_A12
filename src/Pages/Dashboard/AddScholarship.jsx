@@ -9,34 +9,31 @@ const AddScholarship = () => {
   const [subjectCategory, setSubjectCategory] = useState("");
   const [scholarshipCategory, setScholarshipCategory] = useState("");
   const [degree, setDegree] = useState("");
-  const [image,setImage] = useState(null)
-  const {user} = useContext(authorizedContext)
-  
+  const [image, setImage] = useState(null);
+  const { user } = useContext(authorizedContext);
+
   const addscholarshiphandler = async (e) => {
     e.preventDefault();
     const scholarshipName = e.target.scholarshipName.value;
     const universityName = e.target.universityName.value;
-    
-   
     const universityCountry = e.target.universityCountry.value;
     const universityCity = e.target.universityCity.value;
     const universityRank = e.target.universityRank.value;
-
     const tutionFee = e.target.tutionFee.value;
     const applicationFees = e.target.applicationFees.value;
     const serviceCharge = e.target.serviceCharge.value;
     const ApplicationDeadline = e.target.ApplicationDeadline.value;
     const postDate = e.target.postDate.value;
     const postEmail = e.target.postEmail.value;
-    const imageUrl = await imgUpload(image)
+    const imageUrl = await imgUpload(image);
     console.log(image);
-  
+
     console.log(import.meta.env.VITE_ImageBB);
 
     const addScholarshipInfo = {
       scholarshipName,
       universityName,
-      universityImage:imageUrl,
+      universityImage: imageUrl,
       universityCountry,
       universityCity,
       universityRank,
@@ -50,7 +47,6 @@ const AddScholarship = () => {
       scholarshipCategory,
       degree,
     };
-
 
     await axios
       .post(`http://localhost:5000/scholarBridge`, addScholarshipInfo)
@@ -66,9 +62,8 @@ const AddScholarship = () => {
   };
   return (
     <div>
-      <Heading heading="Add Scholarship"/>
+      <Heading heading="Add Scholarship" />
       <div className="container mx-auto mt-10 p-5 bg-[#CEE6F2]">
-        
         <form
           onSubmit={addscholarshiphandler}
           className=" grid md:grid-cols-2 justify-center items-center gap-4"
@@ -111,13 +106,17 @@ const AddScholarship = () => {
           </div> */}
 
           <div>
-                    <label className="block text-sm font-medium text-[#126e82]">University Image</label>
-                    <input
-                     type="file"  
-                     accept="image/*"
-                     onChange={(e)=>setImage(e.target.files[0])}
-                       className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#126e82] focus:border-[#126e82] sm:text-sm" required />
-                </div>
+            <label className="block text-sm font-medium text-[#126e82]">
+              University Image
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImage(e.target.files[0])}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#126e82] focus:border-[#126e82] sm:text-sm"
+              required
+            />
+          </div>
 
           <div>
             <label className="block text-sm font-medium text-[#126e82]">
@@ -125,7 +124,6 @@ const AddScholarship = () => {
             </label>
             <input
               type="text"
-             
               name="universityCountry"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#126e82] focus:border-[#126e82] sm:text-sm"
               required
