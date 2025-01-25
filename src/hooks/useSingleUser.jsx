@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const useSingleUser = () => {
     const {user} = useContext(authorizedContext)
-    const {data:userData}=useQuery({
+    const {data:userData,isLoading:userLoading}=useQuery({
         queryKey:["userData",user?.email],
         queryFn:async()=>{
             
@@ -14,7 +14,7 @@ const useSingleUser = () => {
             
         }
     })
-    return {userData}
+    return {userData,userLoading}
 };
 
 export default useSingleUser;

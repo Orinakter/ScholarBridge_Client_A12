@@ -1,19 +1,19 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import logo from "../../assets/images/logo.png";
 import { useContext } from "react";
 import { authorizedContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
 const Navbar = () => {
   const { user, logOut } = useContext(authorizedContext);
-  const signoutHandler = () => {
-    logOut()
-      .then(() => {
-        navigate("/login");
-        toast.success("User Logout Successfully");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
+  const navigate = useNavigate()
+  const signoutHandler = async () => {
+    try {
+      await logOut();
+      navigate("/");
+      toast.success("User Logout Successfully");
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   const navList = (
     <>
@@ -56,7 +56,9 @@ const Navbar = () => {
           </div>
           <div className="flex items-center gap-2">
             <img src={logo} alt="" className="w-[60px] h-[60px] rounded-full" />
-            <h1 className="text-2xl font-bold  text-[#126e82]">ScholarBridge</h1>
+            <h1 className="text-2xl font-bold  text-[#126e82]">
+              ScholarBridge
+            </h1>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">

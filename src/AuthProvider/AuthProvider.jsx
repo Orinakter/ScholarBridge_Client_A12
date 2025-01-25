@@ -11,7 +11,7 @@ import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.init";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
-export const authorizedContext = createContext(null);
+export const authorizedContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -58,6 +58,8 @@ const AuthProvider = ({ children }) => {
       unRegister();
     };
   }, []);
+
+  console.log(user);
 
   const userProfileUpdate = (name, photo) => {
     const userData = {

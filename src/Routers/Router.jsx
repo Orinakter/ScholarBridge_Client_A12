@@ -24,6 +24,7 @@ import ManageReview from "../Pages/Dashboard/ManageReview";
 import UpdateApply from "../Pages/Dashboard/UpdateApply";
 import PrivateRoute from "./PrivateRoute";
 import Loader from './../Components/Loader';
+import ApplicationUserDetails from "../Pages/Dashboard/ApplicationUserDetails";
 
 export const router = createBrowserRouter([
   {
@@ -126,6 +127,10 @@ export const router = createBrowserRouter([
       {
         path: "manage-scholarship",
         element: <ManageScholarShip />,
+      },
+      {
+        path: "my-application/apllicationUserDetails/:id",
+        element: <ApplicationUserDetails></ApplicationUserDetails>,
       },
     ],
   },
