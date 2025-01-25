@@ -5,6 +5,8 @@ import { authorizedContext } from "../../AuthProvider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useForm } from "react-hook-form";
 import useTopScholarship from "../../hooks/useTopScholarship";
+import { toast } from "react-toastify";
+import useSingleUser from "../../hooks/useSingleUser";
 
 const CheckoutForm = ({ id, amount }) => {
   const stripe = useStripe();
@@ -16,7 +18,8 @@ const CheckoutForm = ({ id, amount }) => {
   const [transactionId, setTransactionId] = useState("");
   const [paymentSuccessful, setPaymentSuccessful] = useState(false); // New state to track payment success
   const { scholarShip } = useTopScholarship(id);
-  console.log(scholarShip);
+  const {userData} = useSingleUser()
+  
 
   useEffect(() => {
     if (amount > 0) {
@@ -100,16 +103,17 @@ const CheckoutForm = ({ id, amount }) => {
     data.scholarshipID = id;
     data.date = date;
     data.paymentStatus = true;
-    data.userEmail = user.email;
+    data.userEmail = user?.email;
     data.feedback = "pending";
     data.status = "pending";
     data.universityCity = scholarShip.universityCity;
     data.applicationFees = scholarShip.applicationFees;
     data.serviceCharge = scholarShip.serviceCharge;
+    data.userId = userData.userId;
 
     const res = await axiosSecure.post("/scholarship-apply", data);
     if (res.data) {
-      alert("Data insert");
+      toast.success("Data insert");
       console.log(res.data);
     }
   };

@@ -11,7 +11,7 @@ import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.init";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
-export const authorizedContext = createContext();
+export const authorizedContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

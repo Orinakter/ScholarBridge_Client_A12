@@ -12,6 +12,7 @@ const Payment = () => {
   const { id } = useParams();
   const location = useLocation();
   const { amount } = location.state || {};
+  console.log(id);
 
   return (
     <div className="payment-container">

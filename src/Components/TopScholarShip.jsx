@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
 import { useNavigate } from "react-router";
 
 const TopScholarShip = () => {
   const navigate = useNavigate();
+  
+  
 
   // Fetch data using React Query
   const {
@@ -58,7 +59,7 @@ const TopScholarShip = () => {
               <span className="text-[#126e82] font-semibold">
                 Application Deadline:
               </span>
-              {item?.applicationDeadline}
+              {item?.ApplicationDeadline}
             </p>
             <p>
               <span className="text-[#126e82] font-semibold">
@@ -76,7 +77,7 @@ const TopScholarShip = () => {
             <div className="mx-auto text-center mt-4">
               <button
                 className="btn bg-[#126e82] text-white font-bold"
-                onClick={() => navigate(`scholarship-details/${item?._id}`)}
+                onClick={() => navigate(`/scholarship-details/${item?._id}`)}
               >
                 Scholarship Details
               </button>

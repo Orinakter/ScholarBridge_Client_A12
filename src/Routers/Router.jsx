@@ -21,6 +21,8 @@ import EditScholarShip from "../Pages/Dashboard/EditScholarShip";
 import Details from "../Pages/Dashboard/Details";
 import AddReview from "../Pages/Dashboard/AddReview";
 import ManageReview from "../Pages/Dashboard/ManageReview";
+import UpdateApply from "../Pages/Dashboard/UpdateApply";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -46,8 +48,10 @@ export const router = createBrowserRouter([
         element: <JoinConversation />,
       },
       {
-        path: "scholarship-details/:id",
-        element: <ScholarshipDetails />,
+        path: "/scholarship-details/:id",
+        element: <PrivateRoute>
+          <ScholarshipDetails />
+        </PrivateRoute>,
       },
       {
         path: "scholarship-details/:id/payment",
@@ -61,7 +65,9 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <PrivateRoute>
+      <DashboardLayout />
+    </PrivateRoute>,
     children: [
       //  User panel
       {
@@ -71,6 +77,10 @@ export const router = createBrowserRouter([
       {
         path: "my-application",
         element: <MyApplication></MyApplication>,
+      },
+      {
+        path: 'update-apply/:id',
+        element: <UpdateApply/>
       },
       {
         path: "my-reviews",

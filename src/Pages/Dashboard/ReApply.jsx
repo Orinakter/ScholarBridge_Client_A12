@@ -1,9 +1,7 @@
-
-
 const ReApply = () => {
     return (
         <div>
-            HHH
+           <h1 className="text-2xl">ReApply</h1>
         </div>
     );
 };
