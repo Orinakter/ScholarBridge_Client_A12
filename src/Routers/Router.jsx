@@ -23,6 +23,7 @@ import AddReview from "../Pages/Dashboard/AddReview";
 import ManageReview from "../Pages/Dashboard/ManageReview";
 import UpdateApply from "../Pages/Dashboard/UpdateApply";
 import PrivateRoute from "./PrivateRoute";
+import Loader from './../Components/Loader';
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,8 @@ export const router = createBrowserRouter([
       {
         path: "all-scholarship-page",
         element: <AllScholarship></AllScholarship>,
+        loader : ()=>fetch(`http://localhost:5000/pages`)
+
       },
     ],
   },
