@@ -25,6 +25,7 @@ import UpdateApply from "../Pages/Dashboard/UpdateApply";
 import PrivateRoute from "./PrivateRoute";
 import Loader from './../Components/Loader';
 import ApplicationUserDetails from "../Pages/Dashboard/ApplicationUserDetails";
+import AllReviews from "../Pages/Dashboard/AllReviews";
 
 export const router = createBrowserRouter([
   {
@@ -122,11 +123,19 @@ export const router = createBrowserRouter([
       // Moderator
       {
         path: "all-applied-scholarship",
-        element: <AllAppliedScholarship />,
+        element:<PrivateRoute>
+           <AllAppliedScholarship />
+        </PrivateRoute>
+      },
+      {
+        path: "all-reviews",
+        element: <AllReviews></AllReviews>,
       },
       {
         path: "manage-scholarship",
-        element: <ManageScholarShip />,
+        element: <PrivateRoute>
+          <ManageScholarShip />
+        </PrivateRoute>,
       },
       {
         path: "my-application/apllicationUserDetails/:id",

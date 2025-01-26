@@ -46,7 +46,7 @@ const Dashboard = () => {
           <NavLink to="manage-scholarship" className="btn w-full">
             Manage Scholarships
           </NavLink>
-          <NavLink to="my-profile" className="btn w-full">
+          <NavLink to="all-reviews" className="btn w-full">
             All Reviews
           </NavLink>
           <NavLink to="all-applied-scholarship" className="btn w-full">

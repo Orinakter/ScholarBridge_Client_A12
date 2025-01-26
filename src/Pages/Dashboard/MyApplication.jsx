@@ -62,7 +62,8 @@ const MyApplication = () => {
       universityId : singleData?.scholarshipID,
       scholarshipDataID:singleData?._id,
       userName: user?.displayName,
-      userEmail:user?.email
+      userEmail:user?.email,
+      userPhoto:user?.photoURL
     };
     await axios.post(`http://localhost:5000/review`,reviewInfo)
     Swal.fire({
