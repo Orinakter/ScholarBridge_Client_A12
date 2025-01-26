@@ -91,6 +91,7 @@ const MyApplication = () => {
               <th>Application Fees</th>
               <th>Service Charge</th>
               <th>Application Status</th>
+              <th>Moderator Feedback</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -107,6 +108,7 @@ const MyApplication = () => {
                 <td>${app.applicationFees}</td>
                 <td>${app.serviceCharge}</td>
                 <td>{app.status}</td>
+                <td>{app?.moderatorFeedback || "No Feedback Found"}</td>
                 <td className="space-x-3 flex justify-center">
                   <Link to={`apllicationUserDetails/${app?._id}`}>
                     <button className="btn text-lg">

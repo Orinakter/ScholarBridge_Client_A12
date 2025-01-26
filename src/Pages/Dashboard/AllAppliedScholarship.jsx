@@ -4,19 +4,76 @@ import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import { Link } from "react-router";
+import { TbListDetails } from "react-icons/tb";
+import { FaEdit } from "react-icons/fa";
+import { MdOutlineCancel } from "react-icons/md";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useState } from "react";
+import Swal from "sweetalert2";
+import Loader from "../../Components/Loader";
+
 const AllAppliedScholarship = () => {
-  const axiosSecure = useAxiosSecure();
+  const [singleData, setSingleData] = useState([]);
+  const [editId,setEditId] = useState("")
+
   const { appliedScholarships, isScholarshipLoading, refetch } =
     useAllAppliedScholarship();
-  console.log(appliedScholarships);
-
-  const manageStatus = async (id) => {
-    const res = await axiosSecure.patch(`/scholarship-apply/${id}`);
-    if (res.data.modifiedCount) {
-      refetch();
-      toast.success("Application approve");
+    if(isScholarshipLoading){
+      return <Loader></Loader>
     }
+
+  const singleReviewHandler = async (id) => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:5000/eachAppliedScholarship/${id}`
+      );
+      setSingleData(data);
+    } catch (error) {}
   };
+
+  const feedbackHandler =async(e)=>{
+    e.preventDefault();
+    const feedback = e.target.feedback.value;
+
+    await axios.patch(`http://localhost:5000/feedbackUpdate/${editId}?feedback=${feedback}`)
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Feedback added successfully",
+      showConfirmButton: false,
+      timer: 1500
+    });
+
+  }
+
+
+  const cancelHandler =(id)=>{
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, reject it!"
+    }).then(async(result) => {
+      if (result.isConfirmed) {
+        await axios.patch(`http://localhost:5000/rejectApplication/${id}`)
+        refetch()
+        Swal.fire({
+          title: "Reject!",
+          text: "Rejected",
+          icon: "success"
+        });
+      }
+    });
+
+  }
+
+
+
+
   return (
     <div>
       <Heading heading="All Applied Scholarship" />
@@ -30,7 +87,7 @@ const AllAppliedScholarship = () => {
               <th>Scholarship Name</th>
               <th>Application Fee</th>
               <th>Application Status</th>
-              <th>Status Update</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -69,31 +126,95 @@ const AllAppliedScholarship = () => {
                   )}
                 </td>
                 <td>{item.status}</td>
-                <td>
-                  {item.status === "Approve" ? (<>
-                  {
-                    item.review ? <button disabled className="btn">Review</button>: <Link
-                    to={`/dashboard/add-review/${item._id}`}
+
+                <td className="flex gap-3">
+                  <button
+                    onClick={async () => {
+                      const modal = document.getElementById("my_modal_5");
+                      if (modal) {
+                        await singleReviewHandler(item?._id);
+                        await modal.showModal();
+                      }
+                    }}
+                    className="btn text-lg"
+                  >
+                    <TbListDetails />
+                  </button>
+                  <button
+                  onClick={async () => {
+                    const modal = document.getElementById("my_modal_6");
+                    if (modal) {
+                       setEditId(item?._id);
+                      await modal.showModal();
+                    }
+                  }}
+                    
                     className="btn"
                   >
-                    Review
-                  </Link>
-                  }
-                  </>
-                    
-                  ) : (
-                    <button
-                      onClick={() => manageStatus(item._id)}
-                      className="btn text-xl text-green-500"
-                    >
-                      <IoCheckmarkDoneCircle />
-                    </button>
-                  )}
+                    <FaEdit />
+                  </button>
+                  <button
+                  onClick={()=>cancelHandler(item?._id)} 
+                  className="btn text-lg text-red-500">
+                    <MdOutlineCancel />
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+
+        {/* feedback-modal */}
+
+        <dialog id="my_modal_6" className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box">
+            <form onSubmit={feedbackHandler}>
+
+            <div className="">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Give Feedback</span>
+                </label>
+                <input
+                  type="text"
+                  name="feedback"
+                  placeholder="Give your feedback"
+                  className="input input-bordered"
+                  required
+                />
+                
+              </div>
+            </div>
+            <div className="mt-8">
+              <button 
+              onClick={() =>
+                document.getElementById("my_modal_6").close()
+              }
+              className="btn">Submit Feedback</button>
+            </div>
+
+            </form>
+            
+          </div>
+        </dialog>
+
+        {/* Open the modal using document.getElementById('ID').showModal() method */}
+
+        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box">
+            <div className="">
+              <h1>{singleData?.universityName}</h1>
+              <p>{singleData?.degree}</p>
+              <p>{singleData?.scholarShipCategory}</p>
+            </div>
+            <div className="modal-action">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </div>
     </div>
   );
