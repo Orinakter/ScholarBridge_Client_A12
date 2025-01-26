@@ -6,7 +6,6 @@ import { MdOutlineSettingsApplications, MdReviews } from "react-icons/md";
 import useUserRole from "../../hooks/useUserRole";
 const Dashboard = () => {
   const { userRole, isUserRoleLoading } = useUserRole();
-
   return (
     <div className="px-10 space-y-4">
       <h1 className="font-bold text-xl text-white text-center">Dashboard</h1>
@@ -24,6 +23,7 @@ const Dashboard = () => {
 
       {userRole === "admin" && (
         <>
+        
           <NavLink to="add-scholarship" className="btn w-full">
             Add Scholarship
           </NavLink>
@@ -38,6 +38,9 @@ const Dashboard = () => {
           </NavLink>
           <NavLink to="all-reviews" className="btn w-full">
             Manage Review
+          </NavLink>
+          <NavLink to="analytics" className="btn w-full">
+            Analytics
           </NavLink>
         </>
       )}

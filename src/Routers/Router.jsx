@@ -26,6 +26,7 @@ import PrivateRoute from "./PrivateRoute";
 import Loader from './../Components/Loader';
 import ApplicationUserDetails from "../Pages/Dashboard/ApplicationUserDetails";
 import AllReviews from "../Pages/Dashboard/AllReviews";
+import Analytics from "../Pages/Dashboard/Analytics";
 
 export const router = createBrowserRouter([
   {
@@ -107,6 +108,10 @@ export const router = createBrowserRouter([
       {
         path: "manage-user",
         element: <ManageUser />,
+      },
+      {
+        path: "/dashboard/analytics",
+        element: <Analytics></Analytics>,
       },
       {
         path: "edit-scholarship/:id",
