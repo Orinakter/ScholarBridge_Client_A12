@@ -9,16 +9,16 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 const ManageUser = () => {
   const { users, isUsersLoading, refetch } = useAllUser();
   const axiosSecure = useAxiosSecure();
-  //   console.log(users);
+  
   if (isUsersLoading) return <Loading />;
 
-  //   Role Change by clicking button
+ 
   const handleRole = (user, userRole) => {
     const roleInfo = {
       userId: user._id,
       userRole,
     };
-    // console.log(roleInfo);
+    
     Swal.fire({
       title: "Are you sure?",
       icon: "warning",
@@ -29,7 +29,7 @@ const ManageUser = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.patch("/user", roleInfo);
-        console.log(res.data.modifiedCount > 0);
+        refetch()
         if (res.data) {
           refetch();
           console.log(res.data);
@@ -45,7 +45,7 @@ const ManageUser = () => {
   // Delete user by call this function
   const handleUserDelete = (user) => {
     const userId = user._id;
-    console.log(userId);
+    
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -57,10 +57,11 @@ const ManageUser = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/user/${userId}`);
+        refetch()
         if (res.data.deletedCount === 1) {
           Swal.fire({
-            title: `${user.name} Deleted!`,
-            text: `${user.name} not able to access`,
+            title: ` Deleted!`,
+            text: ` not able to access`,
             icon: "success",
           });
         }

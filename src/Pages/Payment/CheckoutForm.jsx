@@ -98,23 +98,25 @@ const CheckoutForm = ({ id, amount }) => {
   } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
-    data.name = user.displayName;
-    data.userPhoto = user.photoURL;
+    data.name = user?.displayName;
+    data.userPhoto = user?.photoURL;
     data.scholarshipID = id;
     data.date = date;
     data.paymentStatus = true;
     data.userEmail = user?.email;
     data.feedback = "pending";
     data.status = "pending";
-    data.universityCity = scholarShip.universityCity;
-    data.applicationFees = scholarShip.applicationFees;
-    data.serviceCharge = scholarShip.serviceCharge;
-    data.userId = userData.userId;
+    data.universityCity = scholarShip?.universityCity;
+    data.applicationFees = scholarShip?.applicationFees;
+    data.serviceCharge = scholarShip?.serviceCharge;
+    data.userId = userData?.userId;
+    data.ApplicationDeadline = scholarShip?.ApplicationDeadline
+    
 
     const res = await axiosSecure.post("/scholarship-apply", data);
     if (res.data) {
       toast.success("Data insert");
-      console.log(res.data);
+      
     }
   };
 

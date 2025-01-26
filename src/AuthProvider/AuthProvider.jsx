@@ -78,7 +78,7 @@ const AuthProvider = ({ children }) => {
       console.log(res);
     });
   };
-
+console.log(user);
   const authInfo = {
     registerUser,
     loginUser,
