@@ -16,7 +16,7 @@ const Payment = () => {
 
   return (
     <div className="payment-container">
-      <h2 className="text-center text-2xl font-bold my-4">Make a Payment</h2>
+      <h2 className="text-center text-2xl font-bold my-4 text-[#126e82]">Make a Payment</h2>
       <div className="card w-full max-w-md mx-auto p-4 shadow-lg">
         {amount ? (
           <Elements stripe={stripePromise}>

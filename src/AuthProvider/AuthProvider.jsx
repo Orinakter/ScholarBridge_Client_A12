@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
         setTimeout(async () => {
           try {
             const res = await axiosPublic.post("/users", userInfo);
-            console.log(res.data); // Handle the response as needed
+           
           } catch (error) {
             console.error("Error posting user info:", error);
           }
@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  console.log(user);
+  (user);
 
   const userProfileUpdate = (name, photo) => {
     const userData = {

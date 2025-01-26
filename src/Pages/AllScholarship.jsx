@@ -125,7 +125,7 @@ const AllScholarship = () => {
                   setCurrentPage(currentPage - 1);
                 }
               }}
-              className="flex w-32 justify-center items-center py-2 px-5 rounded-lg  gap-2 bg-blue-600 text-white"
+              className="flex w-32 justify-center items-center py-2 px-5 rounded-lg  gap-2 bg-[#126e82] text-white font-bold"
             >
               <span className="text-xl">
                 <FaArrowLeftLong />
@@ -138,7 +138,7 @@ const AllScholarship = () => {
                 key={item}
                 className={`
                     text-xl ${
-                      currentPage === item && "bg-orange-300"
+                      currentPage === item && "bg-[#CEE6F2]"
                     } font-semibold flex justify-center items-center
                    bg-blue-200 border-2 h-12 w-12 border-blue-50 p-3 rounded-full
                     `}
@@ -152,7 +152,7 @@ const AllScholarship = () => {
                   setCurrentPage(currentPage + 1);
                 }
               }}
-              className="flex w-32 justify-center items-center py-2 px-5 rounded-lg  gap-2 bg-blue-600 text-white"
+              className="flex w-32 justify-center items-center py-2 px-5 rounded-lg  gap-2 bg-[#126e82] text-white font-bold"
             >
               <span className="font-semibold">Next</span>
               <span className=" text-xl">

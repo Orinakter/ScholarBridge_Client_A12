@@ -136,7 +136,7 @@ const CheckoutForm = ({ id, amount }) => {
         <button
           type="submit"
           disabled={!stripe || !clientSecret}
-          className="btn btn-primary mt-4"
+          className="btn bg-[#126e82] text-white font-bold mt-4"
         >
           Pay ${amount}
         </button>
@@ -148,15 +148,15 @@ const CheckoutForm = ({ id, amount }) => {
 
       {/* Conditionally render the additional form after successful payment */}
       {paymentSuccessful && (
-        <div className="mt-4">
-          <h3 className="text-2xl font-semibold text-center py-3">
+        <div className="mt-4 bg-[#CEE6F2] p-16">
+          <h3 className="text-2xl font-semibold text-center text-[#126e82] py-3">
             Enter Your Details
           </h3>
           <form onSubmit={handleSubmit(onSubmit)} className="w-full">
             {/* Phone */}
             <label className="form-control w-full ">
               <div className="label">
-                <span className="label-text">Phone Number</span>
+                <span className="label-text text-[#126e82]">Phone Number</span>
               </div>
               <input
                 {...register("phone", { required: true })}
@@ -168,7 +168,7 @@ const CheckoutForm = ({ id, amount }) => {
             {/* Photo */}
             <label className="form-control w-full ">
               <div className="label">
-                <span className="label-text">Photo</span>
+                <span className="label-text text-[#126e82]">Photo</span>
               </div>
               <input
                 {...register("photo", { required: true })}
@@ -180,7 +180,7 @@ const CheckoutForm = ({ id, amount }) => {
             {/* Gender */}
             <label className="form-control w-full ">
               <div className="label">
-                <span className="label-text">Gender</span>
+                <span className="label-text text-[#126e82]">Gender</span>
               </div>
               <select
                 {...register("gender", { required: true })}
@@ -195,7 +195,7 @@ const CheckoutForm = ({ id, amount }) => {
             {/* Address */}
             <label className="form-control w-full ">
               <div className="label">
-                <span className="label-text">Address</span>
+                <span className="label-tex text-[#126e82]t">Address</span>
               </div>
               <input
                 {...register("address", { required: true })}
@@ -207,21 +207,21 @@ const CheckoutForm = ({ id, amount }) => {
             {/* Degree */}
             <label className="form-control w-full ">
               <div className="label">
-                <span className="label-text">Degree</span>
+                <span className="label-text text-[#126e82]">Degree</span>
               </div>
               <select
                 {...register("degree", { required: true })}
                 className="input"
               >
-                <option value="male">Diploma</option>
-                <option value="female">Bachelor</option>
-                <option value="other">Masters</option>
+                <option value="Diploma">Diploma</option>
+                <option value="Bachelor">Bachelor</option>
+                <option value="Masters">Masters</option>
               </select>
             </label>
             {/* SSC */}
             <label className="form-control w-full ">
               <div className="label">
-                <span className="label-text">SSC Result</span>
+                <span className="label-text text-[#126e82]">SSC Result</span>
               </div>
               <input
                 {...register("sscResult", { required: true })}
@@ -233,7 +233,7 @@ const CheckoutForm = ({ id, amount }) => {
             {/* HSC */}
             <label className="form-control w-full ">
               <div className="label">
-                <span className="label-text">HSC Result</span>
+                <span className="label-text text-[#126e82]">HSC Result</span>
               </div>
               <input
                 {...register("hscResult", { required: true })}
@@ -245,7 +245,7 @@ const CheckoutForm = ({ id, amount }) => {
             {/* University Name */}
             <label className="form-control w-full ">
               <div className="label">
-                <span className="label-text">University Name</span>
+                <span className="label-text text-[#126e82]">University Name</span>
               </div>
               <input
                 {...register("universityName", { required: true })}
@@ -259,7 +259,7 @@ const CheckoutForm = ({ id, amount }) => {
             {/* Scholarship Category */}
             <label className="form-control w-full ">
               <div className="label">
-                <span className="label-text">Scholarship Category </span>
+                <span className="label-text text-[#126e82]">Scholarship Category </span>
               </div>
               <input
                 {...register("scholarShipCategory", { required: true })}
@@ -273,7 +273,7 @@ const CheckoutForm = ({ id, amount }) => {
             {/* Subject Category */}
             <label className="form-control w-full ">
               <div className="label">
-                <span className="label-text">Subject Category </span>
+                <span className="label-text text-[#126e82] ">Subject Category </span>
               </div>
               <input
                 {...register("subjectCategory", { required: true })}
@@ -285,9 +285,11 @@ const CheckoutForm = ({ id, amount }) => {
               />
             </label>
 
-            <button type="submit" className="btn btn-secondary mt-2">
+            <div className="text-center mt-4">
+            <button type="submit" className="btn bg-[#126e82] text-white font-bold mt-2">
               Submit
             </button>
+            </div>
           </form>
         </div>
       )}
