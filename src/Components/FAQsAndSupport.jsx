@@ -49,7 +49,7 @@ const FAQsAndSupport = () => {
           <p className="text-lg text-gray-600 text-center mb-8">
             If you have any more questions, feel free to reach out to our support team.
           </p>
-          <div className="flex justify-center space-x-12">
+          <div className="flex flex-col lg:flex-row justify-center gap-6">
             <div className="flex items-center space-x-2 text-[#126e82]">
               <FaPhoneAlt className="text-xl text-[#126e82]" />
               <span className="text-lg">+1 (555) 123-4567</span>

@@ -29,7 +29,6 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-
   useEffect(() => {
     const unRegister = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -39,27 +38,33 @@ const AuthProvider = ({ children }) => {
           email: currentUser?.email,
           photo: currentUser?.photoURL,
         };
-  
+        axiosPublic.post("/jwt", userInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access_token", res.data.token);
+          }
+        });
+
         // Use setTimeout properly
         setTimeout(async () => {
           try {
             const res = await axiosPublic.post("/users", userInfo);
-           
           } catch (error) {
             console.error("Error posting user info:", error);
           }
         }, 2000);
+      } else {
+        localStorage.removeItem("access_token");
       }
-  
+
       setLoading(false);
     });
-  
+
     return () => {
       unRegister();
     };
   }, []);
 
-  (user);
+  user;
 
   const userProfileUpdate = (name, photo) => {
     const userData = {
@@ -78,7 +83,7 @@ const AuthProvider = ({ children }) => {
       console.log(res);
     });
   };
-console.log(user);
+  console.log(user);
   const authInfo = {
     registerUser,
     loginUser,

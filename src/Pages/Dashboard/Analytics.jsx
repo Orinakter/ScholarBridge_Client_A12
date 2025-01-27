@@ -42,7 +42,7 @@ const Analytics = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <h2>Analytics Overview</h2>
+      <h2 className="text-3xl font-bold mt-5">Analytics Overview</h2>
       <PieChart width={700} height={700}>
         <Pie
           data={chartData}

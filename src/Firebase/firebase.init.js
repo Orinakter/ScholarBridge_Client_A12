@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDXA8Bf2dSxCfUQFM__XGOdJFtG-s4GXZQ",
-  authDomain: "scholarbridge-d09f2.firebaseapp.com",
-  projectId: "scholarbridge-d09f2",
-  storageBucket: "scholarbridge-d09f2.firebasestorage.app",
-  messagingSenderId: "359522606061",
-  appId: "1:359522606061:web:2d05f9382c4960e46465e4"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

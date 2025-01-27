@@ -78,52 +78,76 @@ export const router = createBrowserRouter([
       //  User panel
       {
         path: "my-profile",
-        element: <MyProfile />,
+        element: <PrivateRoute>
+          <MyProfile />,
+        </PrivateRoute>
       },
       {
         path: "my-application",
-        element: <MyApplication></MyApplication>,
+        element: <PrivateRoute>
+          <MyApplication></MyApplication>,
+        </PrivateRoute>
       },
       {
         path: 'update-apply/:id',
-        element: <UpdateApply/>
+        element: <PrivateRoute>
+          <UpdateApply/>
+        </PrivateRoute>
       },
       {
         path: "my-reviews",
-        element: <MyReviews></MyReviews>,
+        element:<PrivateRoute>
+           <MyReviews></MyReviews>,
+        </PrivateRoute>
       },
       {
         path: "add-scholarship",
-        element: <AddScholarship></AddScholarship>,
+        element: <PrivateRoute>
+          <AddScholarship></AddScholarship>,
+        </PrivateRoute>
       },
       {
         path: "update-apply/:id",
-        element: <ReApply />,
+        element: <PrivateRoute>
+          <ReApply />,
+        </PrivateRoute>
       },
       {
         path: "manage-review",
-        element: <ManageReview/>
+        element: <PrivateRoute>
+          <ManageReview/>
+        </PrivateRoute>
       },
       // Admin Panle
       {
         path: "manage-user",
-        element: <ManageUser />,
+        element: <PrivateRoute>
+          <ManageUser />,
+        </PrivateRoute>
       },
       {
         path: "/dashboard/analytics",
-        element: <Analytics></Analytics>,
+        element:<PrivateRoute>
+           <Analytics></Analytics>,
+        </PrivateRoute>
       },
       {
         path: "edit-scholarship/:id",
-        element: <EditScholarShip />,
+        element: <PrivateRoute>
+          <EditScholarShip />,
+        </PrivateRoute>
       },
       {
         path: "details/:id",
-        element: <Details />,
+        element: <PrivateRoute>
+          <Details />,
+        </PrivateRoute>
       },
       {
         path: "add-review/:id",
-        element: <AddReview />,
+        element: <PrivateRoute>
+          <AddReview />,
+        </PrivateRoute>
       },
       // Moderator
       {
@@ -134,7 +158,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "all-reviews",
-        element: <AllReviews></AllReviews>,
+        element: <PrivateRoute>
+          <AllReviews></AllReviews>,
+        </PrivateRoute>
       },
       {
         path: "manage-scholarship",
@@ -144,7 +170,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "my-application/apllicationUserDetails/:id",
-        element: <ApplicationUserDetails></ApplicationUserDetails>,
+        element: <PrivateRoute>
+          <ApplicationUserDetails></ApplicationUserDetails>,
+        </PrivateRoute>
       },
     ],
   },

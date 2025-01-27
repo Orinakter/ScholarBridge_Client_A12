@@ -8,7 +8,7 @@ import footerLogo from '../../assets/images/logo.png'
 const Footer = () => {
     return (
         <div>
-             <footer className="bg-[#CEE6F2] text-gray-600 py-10 mt-80 ">
+             <footer className="bg-[#CEE6F2] text-gray-600 py-10 mt-32 ">
   <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
    
     <div>
@@ -71,7 +71,7 @@ const Footer = () => {
 
   
   <div className="mt-8 border-t border-[#126e82] pt-6 text-center text-sm">
-    <p>Copyright 2025 ArtifactLog. All rights reserved.</p>
+    <p>Copyright 2025 ScholarBridge. All rights reserved.</p>
     <p>
       Developed by <a className="text-[#126e82] font-bold hover:underline">Orin Akther</a>.
     </p>

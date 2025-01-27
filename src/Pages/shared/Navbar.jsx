@@ -1,5 +1,4 @@
 import { Link, NavLink, useNavigate } from "react-router";
-import logo from "../../assets/images/logo.png";
 import { useContext } from "react";
 import { authorizedContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
@@ -54,9 +53,9 @@ const Navbar = () => {
               {navList}
             </ul>
           </div>
-          <div className="flex items-center gap-2">
-            <img src={logo} alt="" className="w-[60px] h-[60px] rounded-full" />
-            <h1 className="text-2xl font-bold  text-[#126e82]">
+          <div className="hidden lg:flex items-center gap-3">
+            <img src="https://i.ibb.co.com/9n365J4/pexels-raven-domingo-66737910-11912061.jpg" alt="" className="w-[50px] h-[50px] rounded-full" />
+            <h1 className="text-xl font-bold  text-[#126e82]">
               ScholarBridge
             </h1>
           </div>
