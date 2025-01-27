@@ -26,7 +26,7 @@ const ManageReview = () => {
       </div>
     );
   }
-console.log(reviews);
+
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-md">
       <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">

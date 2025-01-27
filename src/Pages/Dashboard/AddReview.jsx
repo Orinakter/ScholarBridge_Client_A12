@@ -42,7 +42,7 @@ const AddReview = () => {
       console.error("Error submitting review:", error);
       alert("Failed to submit review. Please try again.");
     }
-    console.log(reviewData);
+   
   };
 
   return (

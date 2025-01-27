@@ -17,7 +17,7 @@ const ScholarshipDetails = () => {
     queryKey: ["individualData", id],
     enabled: !!id,
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/topScholarship/${id}`);
+      const res = await axios.get(`https://scholar-bridge-server-side.vercel.app/topScholarship/${id}`);
       return res.data;
     },
   });
@@ -27,18 +27,18 @@ const ScholarshipDetails = () => {
     queryKey: ["scholarshipReview", id],
     enabled: !!id,
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/scholarshipReview/${id}`);
+      const res = await axios.get(`https://scholar-bridge-server-side.vercel.app/scholarshipReview/${id}`);
       return res.data;
     },
   });
 
-  console.log(scholarshipReview);
+  
 
-  // console.log(scholarshipData);
+ 
   const serviceCharge = parseFloat(scholarshipData.serviceCharge);
   const applicationfee = parseFloat(scholarshipData.applicationFees);
   const amount = serviceCharge + applicationfee;
-  // console.log(amount);
+ 
 
   return (
     <div className="">

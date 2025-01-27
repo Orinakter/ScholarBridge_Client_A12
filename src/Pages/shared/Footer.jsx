@@ -3,8 +3,6 @@ import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6';
 import { IoIosContact } from 'react-icons/io';
 import { MdEmail } from 'react-icons/md';
-import footerLogo from '../../assets/images/logo.png'
-
 const Footer = () => {
     return (
         <div>
@@ -13,7 +11,7 @@ const Footer = () => {
    
     <div>
      <div className="flex items-center gap-3 mb-4">
-      <img src={footerLogo} alt=""  className="w-[50px] h-[40px] rounded-full" />
+      <img src="https://i.ibb.co.com/hFw8M3H/icon.jpg" alt=""  className="w-[50px] h-[40px] rounded-full" />
      <h2 className="text-xl font-bold text-[#126e82]"> ScholarBridge</h2>
      </div>
       <p className="text-sm ">

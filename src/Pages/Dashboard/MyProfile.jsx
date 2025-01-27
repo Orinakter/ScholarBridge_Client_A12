@@ -10,13 +10,13 @@ const MyProfile = () => {
     queryKey:["userProfileData",user?.email],
     queryFn:async()=>{
         
-         const {data}=await axios.get(`http://localhost:5000/singleUser/${user?.email}`)
+         const {data}=await axios.get(`https://scholar-bridge-server-side.vercel.app/singleUser/${user?.email}`)
          return data
         
     }
 })
 
-console.log(userProfileData);
+
   
  
 

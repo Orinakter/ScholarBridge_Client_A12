@@ -27,7 +27,7 @@ const AllAppliedScholarship = () => {
   const singleReviewHandler = async (id) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/eachAppliedScholarship/${id}`
+        `https://scholar-bridge-server-side.vercel.app/eachAppliedScholarship/${id}`
       );
       setSingleData(data);
     } catch (error) {}
@@ -38,7 +38,7 @@ const AllAppliedScholarship = () => {
     const feedback = e.target.feedback.value;
 
     await axios.patch(
-      `http://localhost:5000/feedbackUpdate/${editId}?feedback=${feedback}`
+      `https://scholar-bridge-server-side.vercel.app/feedbackUpdate/${editId}?feedback=${feedback}`
     );
     Swal.fire({
       position: "top-end",
@@ -60,7 +60,7 @@ const AllAppliedScholarship = () => {
       confirmButtonText: "Yes, reject it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await axios.patch(`http://localhost:5000/rejectApplication/${id}`);
+        await axios.patch(`https://scholar-bridge-server-side.vercel.app/rejectApplication/${id}`);
         refetch();
         Swal.fire({
           title: "Reject!",
@@ -88,7 +88,7 @@ const AllAppliedScholarship = () => {
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead>
+            <thead className="bg-[#126e82] text-white font-bold">
               <tr>
                 <th>SI</th>
                 <th>University Name</th>
@@ -146,7 +146,7 @@ const AllAppliedScholarship = () => {
                           await modal.showModal();
                         }
                       }}
-                      className="btn text-lg"
+                      className="btn text-lg text-blue-600"
                     >
                       <TbListDetails />
                     </button>
@@ -158,7 +158,7 @@ const AllAppliedScholarship = () => {
                           await modal.showModal();
                         }
                       }}
-                      className="btn"
+                      className="btn text-lg text-green-600"
                     >
                       <FaEdit />
                     </button>
@@ -185,7 +185,7 @@ const AllAppliedScholarship = () => {
                 <div className="">
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Give Feedback</span>
+                      <span className="label-text text-[#126e82] font-semibold">Give Feedback</span>
                     </label>
                     <input
                       type="text"
@@ -201,7 +201,7 @@ const AllAppliedScholarship = () => {
                     onClick={() =>
                       document.getElementById("my_modal_6").close()
                     }
-                    className="btn"
+                    className="btn bg-[#126e82] text-white font-bold"
                   >
                     Submit Feedback
                   </button>
@@ -217,15 +217,15 @@ const AllAppliedScholarship = () => {
             className="modal modal-bottom sm:modal-middle"
           >
             <div className="modal-box">
-              <div className="">
-                <h1>{singleData?.universityName}</h1>
-                <p>{singleData?.degree}</p>
-                <p>{singleData?.scholarShipCategory}</p>
+              <div className="text-xl font-semibold text-center">
+                <h1><span className="font-bold">UniversityName: </span>{singleData?.universityName}</h1>
+                <p><span className="font-bold">Degree: </span>{singleData?.degree}</p>
+                <p><span className="font-bold">SingleData: </span>{singleData?.scholarShipCategory}</p>
               </div>
               <div className="modal-action">
                 <form method="dialog">
                   {/* if there is a button in form, it will close the modal */}
-                  <button className="btn">Close</button>
+                  <button className="btn bg-[#126e82] text-white font-bold">Close</button>
                 </form>
               </div>
             </div>

@@ -5,14 +5,14 @@ import CheckoutForm from "./CheckoutForm";
 
 // Load Stripe public key
 const stripePromise = loadStripe(`pk_test_51QjC8QFQO1mzBkRd4Qe5ryMuCdct1xnC3xIaEhBX6QsqcG6CzC4htRf2Sjf1C4qgJYHgGa6B2z9zpcfqmqY4CbrJ00CgLQ4BSJ`);
-console.log(import.meta.env.VITE_Payment_Gateway_PK);
-// console.log(stripePromise);
+
+
 
 const Payment = () => {
   const { id } = useParams();
   const location = useLocation();
   const { amount } = location.state || {};
-  console.log(id);
+ 
 
   return (
     <div className="payment-container">

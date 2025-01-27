@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { AiFillHome } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { MdOutlineSettingsApplications, MdReviews } from "react-icons/md";
@@ -8,7 +8,14 @@ const Dashboard = () => {
   const { userRole, isUserRoleLoading } = useUserRole();
   return (
     <div className="px-10 space-y-4">
-      <h1 className="font-bold text-xl text-white text-center">Dashboard</h1>
+     <div className="">
+     <Link to="/">
+     <div className="flex gap-3">
+     <img src="https://i.ibb.co.com/hFw8M3H/icon.jpg" alt="" className="w-[30px] h-[30px] rounded-full" />
+     <h1 className="font-bold text-xl text-white text-center">Dashboard</h1>
+     </div>
+     </Link>
+     </div>
       {userRole === "user" && (
         <>
           <NavLink to="my-application" className="btn w-full">

@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdOutlineCancel } from "react-icons/md";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const MyReviews = () => {
   const axiosSecure = useAxiosSecure();
@@ -37,7 +38,7 @@ const MyReviews = () => {
       postDate,
     };
 
-    await axios.patch(`http://localhost:5000/editReview/${editId}`, reviewInfo);
+    await axios.patch(`https://scholar-bridge-server-side.vercel.app/editReview/${editId}`, reviewInfo);
     reviewRefetch();
     Swal.fire({
       position: "top-end",
@@ -51,11 +52,11 @@ const MyReviews = () => {
   const singleReviewHandler = async (id) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/singleReview/${id}`
+        `https://scholar-bridge-server-side.vercel.app/singleReview/${id}`
       );
       setSingleData(data);
     } catch (error) {
-      console.log(error);
+      toast.error(error?.message);
     }
   };
 
@@ -70,7 +71,7 @@ const MyReviews = () => {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:5000/reviewDelete/${id}`)
+        await axios.delete(`https://scholar-bridge-server-side.vercel.app/reviewDelete/${id}`)
         reviewRefetch();
         Swal.fire({
           title: "Deleted!",
@@ -83,11 +84,11 @@ const MyReviews = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">My Reviews</h1>
-      <div className="overflow-x-auto">
+      <h1 className="text-2xl font-bold mb-6 text-center">My Reviews</h1>
+      <div className="overflow-x-auto  p-4 rounded-lg">
         <table className="table w-full">
           {/* Table Head */}
-          <thead>
+          <thead className="bg-[#126e82] text-white font-bold">
             <tr>
               <th>SI</th>
               <th>Scholarship Name</th>
@@ -180,10 +181,10 @@ const MyReviews = () => {
                   />
                 </div>
               </div>
-              <div className="">
+              <div className="mt-4">
                 <button
                   onClick={() => document.getElementById("my_modal_5").close()}
-                  className="btn "
+                  className="btn bg-[#126e82] text-white font-bold "
                 >
                   Submit
                 </button>

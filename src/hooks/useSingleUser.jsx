@@ -9,7 +9,7 @@ const useSingleUser = () => {
         queryKey:["userData",user?.email],
         queryFn:async()=>{
             
-             const {data}=await axios.get(`http://localhost:5000/getSingleUser/${user?.email}`)
+             const {data}=await axios.get(`https://scholar-bridge-server-side.vercel.app/getSingleUser/${user?.email}`)
              return data
             
         }

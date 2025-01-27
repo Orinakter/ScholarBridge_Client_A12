@@ -11,7 +11,7 @@ const useTopScholarship = ( id ) => {
       return res.data
     },
   });
-  console.log(scholarShip);
+  
   return { scholarShip };
 };
 

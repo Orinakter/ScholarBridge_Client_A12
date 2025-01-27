@@ -64,7 +64,7 @@ export const router = createBrowserRouter([
       {
         path: "all-scholarship-page",
         element: <AllScholarship></AllScholarship>,
-        loader : ()=>fetch(`http://localhost:5000/pages`)
+        loader : ()=>fetch(`https://scholar-bridge-server-side.vercel.app/pages`)
 
       },
     ],

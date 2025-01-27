@@ -19,7 +19,7 @@ const AllScholarship = () => {
     queryFn: () =>
       axios
         .get(
-          `http://localhost:5000/scholarBridge?search=${search}&page=${currentPage}&size=${itemPerPage}`
+          `https://scholar-bridge-server-side.vercel.app/scholarBridge?search=${search}&page=${currentPage}&size=${itemPerPage}`
         )
         .then((data) => {
           return data.data;

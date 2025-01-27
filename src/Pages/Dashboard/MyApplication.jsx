@@ -26,7 +26,7 @@ const MyApplication = () => {
   });
 
   const handleDelete = async (id) => {
-    console.log(id);
+   
     const res = await axiosSecure.delete(`/scholarship-apply/${id}`);
     if (res.data.deletedCount === 1) {
       refetch();
@@ -35,14 +35,14 @@ const MyApplication = () => {
   };
 
   const singleReviewHandler = async (id) => {
-    console.log(id);
+    
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/applicationUserData/${id}`
+        `https://scholar-bridge-server-side.vercel.app/applicationUserData/${id}`
       );
       setSingleData(data);
     } catch (error) {
-      console.log(error);
+      toast.error(error?.message);
     }
   };
  
@@ -65,7 +65,7 @@ const MyApplication = () => {
       userEmail:user?.email,
       userPhoto:user?.photoURL
     };
-    await axios.post(`http://localhost:5000/review`,reviewInfo)
+    await axios.post(`https://scholar-bridge-server-side.vercel.app/review`,reviewInfo)
     Swal.fire({
       position: "top-end",
       icon: "success",
@@ -77,10 +77,11 @@ const MyApplication = () => {
 
   return (
     <div>
-      <div className="overflow-x-auto">
+      <h1 className="text-xl text-center font-bold mb-6 mt-6">My Application</h1>
+      <div className="overflow-x-auto mt-12 rounded-lg">
         <table className="table">
           {/* Table Head */}
-          <thead>
+          <thead className="bg-[#126e82] text-white font-bold">
             <tr>
               <th>SI</th>
               <th>University Name</th>
@@ -111,7 +112,7 @@ const MyApplication = () => {
                 <td>{app?.moderatorFeedback || "No Feedback Found"}</td>
                 <td className="space-x-3 flex justify-center">
                   <Link to={`apllicationUserDetails/${app?._id}`}>
-                    <button className="btn text-lg">
+                    <button className="btn text-lg text-blue-600">
                       <TbListDetails />
                     </button>
                   </Link>
@@ -119,7 +120,7 @@ const MyApplication = () => {
                     <div className="">
                       <Link
                         to={`/dashboard/update-apply/${app._id}`}
-                        className="btn text-lg"
+                        className="btn text-lg text-green-600"
                       >
                         <FaEdit />
                       </Link>
@@ -148,7 +149,7 @@ const MyApplication = () => {
                         singleReviewHandler(app?._id);
                       }
                     }}
-                    className="btn"
+                    className="btn text-lg text-[#126e82]"
                   >
                     <MdRateReview />
                   </button>
@@ -208,10 +209,10 @@ const MyApplication = () => {
                   />
                 </div>
               </div>
-              <div className="">
+              <div className="mt-4">
                 <button
                   onClick={() => document.getElementById("my_modal_5").close()}
-                  className="btn "
+                  className="btn bg-[#126e82 text-white font-bold] "
                 >
                   Submit
                 </button>

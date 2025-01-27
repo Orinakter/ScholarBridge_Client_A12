@@ -32,7 +32,6 @@ const ManageUser = () => {
         refetch()
         if (res.data) {
           refetch();
-          console.log(res.data);
           Swal.fire({
             title: `${user.name}`,
             text: ` Now ${userRole}`,
@@ -70,10 +69,11 @@ const ManageUser = () => {
   };
   return (
     <div>
+      <h1 className="text-2xl font-bold text-center mt-5 mb-5">Manage User</h1>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
-          <thead>
+          <thead className="bg-[#126e82] text-white font-bold">
             <tr>
               <th>SI</th>
               <th>Name</th>

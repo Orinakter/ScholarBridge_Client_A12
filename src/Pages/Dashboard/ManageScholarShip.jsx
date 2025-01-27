@@ -8,7 +8,7 @@ import { Link } from "react-router";
 const ManageScholarShip = () => {
   const { allScholarship, refetch } = useAllScholarship();
   const axiosSecure = useAxiosSecure();
-  console.log(allScholarship);
+  
 
 
 
@@ -39,10 +39,10 @@ const ManageScholarShip = () => {
   return (
     <div>
       <Heading heading="Manage ScholarShip"/>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto  p-4 rounded-lg">
         <table className="table">
           {/* head */}
-          <thead>
+          <thead className="bg-[#126e82] text-white font-bold">
             <tr>
               <th>SI</th>
               <th>Scholarship Name</th>
@@ -78,15 +78,17 @@ const ManageScholarShip = () => {
                 <td>{item.degree}</td>
                 <td>{item.applicationFees}</td>
                 <td className="space-x-4">
-                  <Link to={`/dashboard/details/${item._id}`} className="btn">
-                    <TbListDetails />
+                  <div className="flex items-center gap-3">
+                  <Link to={`/dashboard/details/${item._id}`}>
+                    <button className="btn text-lg text-blue-600"><TbListDetails /></button>
                   </Link>
-                  <Link to={`/dashboard/edit-scholarship/${item._id}`}  className="btn">
-                    <CiEdit />
+                  <Link to={`/dashboard/edit-scholarship/${item._id}`} >
+                    <button  className="btn text-lg text-green-600"><CiEdit /></button>
                   </Link>
-                  <button onClick={() => handleDelete(item)} className="btn">
+                  <button onClick={() => handleDelete(item)} className="btn text-lg text-red-600">
                     <TbCancel />
                   </button>
+                  </div>
                 </td>
               </tr>
             ))}

@@ -1,6 +1,6 @@
 #### ScholarBridge
 
-## Live Link :
+## Live Link :(https://scholarbridge-d09f2.web.app/)
 
 ## ScholarBridge is a centralized, web-based platform designed to simplify the process of finding, applying for, and managing scholarships. It serves as a bridge between scholarship providers and students, ensuring efficient and transparent workflows for all stakeholders.The platform is built with modern technologies to ensure responsiveness, security, and ease of use. Students can seamlessly explore scholarships, track applications, and manage their profiles, while administrators and moderators can oversee scholarship postings, applications, and user roles. With its robust features and analytics capabilities, the system is tailored to meet the needs of students, moderators, and administrators alike.
 

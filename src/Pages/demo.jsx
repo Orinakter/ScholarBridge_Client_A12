@@ -9,13 +9,13 @@ const ScholarshipDetails = () => {
   const { isLoading, data: scholarshipData={}, isError, error } = useQuery({
     queryKey: ['scholarshipData', id], 
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:5000/topScholarship/${id}`);
+      const response = await axios.get(`https://scholar-bridge-server-side.vercel.app/topScholarship/${id}`);
       return response.data;
     },
     enabled: !!id, 
   });
 
-  console.log(scholarshipData);
+
 
 
 

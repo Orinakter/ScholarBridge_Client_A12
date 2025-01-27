@@ -26,9 +26,9 @@ const AddScholarship = () => {
     const postDate = e.target.postDate.value;
     const postEmail = e.target.postEmail.value;
     const imageUrl = await imgUpload(image);
-    console.log(image);
+   
 
-    console.log(import.meta.env.VITE_ImageBB);
+   
 
     const addScholarshipInfo = {
       scholarshipName,
@@ -49,7 +49,7 @@ const AddScholarship = () => {
     };
 
     await axios
-      .post(`http://localhost:5000/scholarBridge`, addScholarshipInfo)
+      .post(`https://scholar-bridge-server-side.vercel.app/scholarBridge`, addScholarshipInfo)
       .then((data) => {
         Swal.fire({
           position: "top-end",

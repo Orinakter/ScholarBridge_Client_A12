@@ -16,7 +16,7 @@ const TopScholarShip = () => {
   } = useQuery({
     queryKey: ["scholarshipData"],
     queryFn: () =>
-      axios.get(`http://localhost:5000/topScholarship`).then((res) => res.data),
+      axios.get(`https://scholar-bridge-server-side.vercel.app/topScholarship`).then((res) => res.data),
   });
 
   if (isLoading) {

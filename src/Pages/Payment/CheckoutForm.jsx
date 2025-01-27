@@ -76,7 +76,7 @@ const CheckoutForm = ({ id, amount }) => {
         status: "pending",
       };
       const res = await axiosSecure.post("/payments", payment);
-      console.log("payment saved", res.data);
+    
 
       if (res.data?.paymentResult?.insertedId) {
         setPaymentSuccessful(true); // Mark payment as successful
@@ -97,7 +97,7 @@ const CheckoutForm = ({ id, amount }) => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
+   
     data.name = user?.displayName;
     data.userPhoto = user?.photoURL;
     data.scholarshipID = id;

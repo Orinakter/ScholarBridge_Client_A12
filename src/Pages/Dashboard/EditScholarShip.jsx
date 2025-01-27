@@ -19,7 +19,7 @@ const EditScholarShip = () => {
       return res.data;
     },
   });
-  console.log(scholarship);
+
   const {
     scholarshipName,
     universityName,
@@ -44,7 +44,7 @@ const EditScholarShip = () => {
     const imageUrl = await imgUpload(image);
     data.universityImage = imageUrl;
     axiosSecure
-      .put(`http://localhost:5000/scholarBridge/${id}`, data)
+      .put(`https://scholar-bridge-server-side.vercel.app/scholarBridge/${id}`, data)
       .then(() => {
         Swal.fire({
           position: "top-end",
