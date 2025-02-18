@@ -6,6 +6,7 @@ import Testimonials from '../Components/Testimonials';
 import FAQsAndSupport from '../Components/FAQsAndSupport';
 import { Helmet } from 'react-helmet';
 import ScholarshipDeadline from '../Components/ScholarshipDeadline';
+import ScholarshipCompare from '../Components/ScholarshipCompare';
 
 const HomePage = () => {
     return (
@@ -15,6 +16,7 @@ const HomePage = () => {
             <div className="space-y-12 2xl:space-y-28 py-12 2xl:py-28">
             <TopScholarShip></TopScholarShip>
             <AllSchoolarship></AllSchoolarship>
+            <ScholarshipCompare></ScholarshipCompare>
             <ScholarshipDeadline></ScholarshipDeadline>
             <Testimonials></Testimonials>
             <FAQsAndSupport></FAQsAndSupport>
