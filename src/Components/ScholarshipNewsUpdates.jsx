@@ -42,6 +42,7 @@ const ScholarshipNewsUpdates = () => {
 
        
         <div className="flex items-center gap-6 bg-white p-6 rounded-lg shadow-md border">
+          
           <img src="https://i.ibb.co.com/VcYwtkLJ/pexels-shkrabaanthony-5816283.jpg" alt="" className="w-24 h-24" /> 
           <div className="flex-1">
             <h3 className="text-lg font-semibold text-[#126e82]">Financial Aid Information Session</h3>
