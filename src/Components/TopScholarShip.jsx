@@ -74,7 +74,7 @@ const TopScholarShip = () => {
               {item?.applicationFees}
             </p>
 
-            <div className="mx-auto text-center mt-4">
+            <div className="mx-auto text-center mt-6">
               <button
                 className="btn bg-[#126e82] text-white font-bold"
                 onClick={() => navigate(`/scholarship-details/${item?._id}`)}

@@ -71,7 +71,7 @@ const Navbar = () => {
           {user ? (
             <div className="flex justify-center items-center gap-3">
               <img
-                className="w-10 h-10 rounded-full"
+                className="w-10 h-10 ml-3 rounded-full"
                 src={user.photoURL}
                 alt=""
               />

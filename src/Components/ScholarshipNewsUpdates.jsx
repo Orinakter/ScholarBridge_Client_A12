@@ -21,7 +21,7 @@ const ScholarshipNewsUpdates = () => {
             </p>
           </div>
           <div className="border border-[#126e82] text-[#126e82] px-4 py-2 rounded-md flex items-center gap-2">
-            <FaFilePdf className="text-xl" /> Download
+            <a href="/NewScholarship(1).pdf" download="NewScholarship(1).pdf"><FaFilePdf className="text-xl" /> Download</a>
           </div>
         </div>
 
@@ -36,7 +36,7 @@ const ScholarshipNewsUpdates = () => {
             </p>
           </div>
           <div className="border border-[#126e82] text-[#126e82] px-4 py-2 rounded-md flex items-center gap-2">
-            <FaFilePdf className="text-xl" /> Download
+            <a href="guide.pdf" download="guide.pdf"><FaFilePdf className="text-xl" />Download</a>
           </div>
         </div>
 
@@ -51,7 +51,7 @@ const ScholarshipNewsUpdates = () => {
             </p>
           </div>
           <div className="border border-[#126e82] text-[#126e82] px-4 py-2 rounded-md flex items-center gap-2">
-            <FaFilePdf className="text-xl" /> Download
+           <a href="/Financial.pdf" download="Financial.pdf"> <FaFilePdf className="text-xl" /> Download</a>
           </div>
         </div>
       </div>
