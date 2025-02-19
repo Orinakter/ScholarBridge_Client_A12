@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet';
 import ScholarshipDeadline from '../Components/ScholarshipDeadline';
 import ScholarshipCompare from '../Components/ScholarshipCompare';
 import ScholarshipNewsUpdates from '../Components/ScholarshipNewsUpdates';
+import HighImpactScholarship from '../Components/HighImpactScholarship';
 
 const HomePage = () => {
     return (
@@ -18,6 +19,7 @@ const HomePage = () => {
             <TopScholarShip></TopScholarShip>
             <AllSchoolarship></AllSchoolarship>
             <ScholarshipCompare></ScholarshipCompare>
+            <HighImpactScholarship></HighImpactScholarship>
             <ScholarshipDeadline></ScholarshipDeadline>
             <ScholarshipNewsUpdates></ScholarshipNewsUpdates>
             <Testimonials></Testimonials>

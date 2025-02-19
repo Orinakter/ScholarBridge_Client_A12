@@ -56,6 +56,7 @@ const ScholarshipNewsUpdates = () => {
         </div>
       </div>
     </div>
+   
   );
 };
 
