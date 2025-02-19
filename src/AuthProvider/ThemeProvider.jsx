@@ -11,6 +11,7 @@ const ThemeProvider = ({children}) => {
     theme,
     setTheme
    }
+   
   return (
    <ThemeContext.Provider value={themeInfo}>
     {children}
